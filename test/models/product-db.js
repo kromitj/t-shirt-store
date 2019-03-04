@@ -52,15 +52,14 @@ describe('Product to DB', () => {
 				})
 			})
 		})
-		describe("Not-nullable properties give the proper validation errors", () => {
+		describe("Non-Nullable properties throw error when Null", () => {
 			notNullAbles.forEach((property) => {
-				it(`Error thrown for ${property}`, (done) => {
-
+				it(`${property} is null, so error is thrown` , (done) => {
+					const propertyTemp = productSeed[property]
 					productSeed[property] = null
-					Product.create(productSeed).then((product) => {
-						done()
-					}).catch((err) => {
+					Product.create(productSeed).catch((err) => {
 						expect(err.name).to.equal('SequelizeValidationError')
+						productSeed[property] = propertyTemp
 						done()
 					})				
 				})
@@ -77,16 +76,25 @@ describe('Product to DB', () => {
 		// 	})
 
 		// })
-		describe("Assossiations: ", () => {
-			it("can find its associated category", (done) => {			
-				Product.findByPk(1).then((product) => {
-					product.getCategory().then((category) => {
-						expect(category.name).to.equal("French")
-						done()
-					})
-				})
-			})
-		})
+		// describe("Assossiations: ", () => {
+			// it("can find its associated category", (done) => {			
+			// 	Product.findByPk(1).then((product) => {
+			// 		product.getCategory().then((category) => {
+			// 			expect(category.name).to.equal("French")
+			// 			done()
+			// 		})
+			// 	})
+			// })
+			// it("can find its associated attributeValues", (done) => {			
+				// Product.findByPk(1).then((product) => {
+				// 	product.getAttributeValues().then((attrubuteValues) => {
+				// 		console.log("yoooooooooooooooo")
+				// 		expect(attrubuteValues[0].name).to.equal("French")
+				// 		done()
+				// 	})
+				// })
+			// })
+		// })
 		// afterEach(() => {
 		// 	Product.destroy({
 		// 		where: {
