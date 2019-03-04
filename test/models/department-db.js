@@ -26,6 +26,14 @@ describe('Department to DB', () => {
 			})
 			.catch((err) => {
 				done(err)
+			}).then(() => {
+				Department.destroy({
+					where: {
+						name: departmentSeed.name
+					}
+				}).catch((err) => {
+					console.error(err)
+				})
 			})
 		})		
 		it("can find the first record", (done) => {
@@ -46,6 +54,16 @@ describe('Department to DB', () => {
 						expect(err.name).to.equal('SequelizeValidationError')
 						done()
 					})				
+				})
+			})
+		})
+		describe("Assossiations: ", () => {
+			it("can find its associated category", (done) => {			
+				Department.findByPk(1).then((department) => {
+					department.getCategories().then((categories) => {
+						expect(categories[0].name).to.equal("French")
+						done()
+					})
 				})
 			})
 		})

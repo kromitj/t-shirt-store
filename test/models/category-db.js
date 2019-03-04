@@ -14,6 +14,7 @@ const categorySeed = {
   }
 
   const notNullAbles = [
+	"department_id",
 	"name",
 ]
 
@@ -46,6 +47,24 @@ describe('Category to DB', () => {
 						done()
 					})				
 				})
+			})
+		})
+		describe("Assossiations: ", () => {
+			it("can find its associated department", (done) => {			
+				Category.findByPk(1).then((category) => {
+					category.getDepartment().then((department) => {
+						expect(department.name).to.equal("Regional")
+						done()
+					}).catch((err) => 	done(err))
+				}).catch((err) => done(err)) 
+			})
+			it("can find its associated products", (done) => {			
+				Category.findByPk(1).then((category) => {
+					category.getProducts().then((products) => {
+						expect(products.length).to.equal(18)
+						done()
+					}).catch((err) => 	done(err))
+				}).catch((err) => done(err)) 
 			})
 		})
 		it("can find the first record", (done) => {

@@ -20,6 +20,7 @@ module.exports = (sequelize, DataTypes) => {
 );
 
   Department.associate = function(models) {
+    Department.hasMany(models.Category, {foreignKey: 'department_id'})
   };
 
   return Department;
