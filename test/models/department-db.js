@@ -11,24 +11,20 @@ const { Department } = require('../../models')
 
 describe('Department to DB', () => {
 	it("can find the first record", (done) => {
-		Department.findByPk(1)
-		.then(department => {
+		Department.findByPk(1).then(department => {
 		  expect(department.get('name')).to.equal('Regional')		
 		  done()	  
-		})
-		.catch((err) => {
+		}).catch((err) => {
 			done(err)
 		})
 	})
 	it("can create a new Department and save it to the db", (done) => {
-		Department.create(departmentSeed)
-		.then((department) => {
+		Department.create(departmentSeed).then((department) => {
 			Object.keys(departmentSeed).forEach((el) => {
 				expect(department.dataValues[el]).to.equal(departmentSeed[el])
 			})
 			done()
-		})
-		.catch((err) => {
+		}).catch((err) => {
 			done(err)
 		}).then(() => {
 			Department.destroy({

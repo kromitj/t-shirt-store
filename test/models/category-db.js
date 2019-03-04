@@ -11,24 +11,20 @@ const { Category } = require('../../models')
 
 describe('Category to DB', () => {
 	it("can find the first record", (done) => {
-		Category.findByPk(1)
-		.then(category => {
+		Category.findByPk(1).then(category => {
 		  expect(category.get('name')).to.equal('French')		
 		  done()	  
-		})
-		.catch((err) => {
+		}).catch((err) => {
 			done(err)
 		})
 	})
 	it("can create a new Category and save it to the db", (done) => {
-		Category.create(categorySeed)
-		.then((category) => {
+		Category.create(categorySeed).then((category) => {
 			Object.keys(categorySeed).forEach((el) => {
 				expect(category.dataValues[el]).to.equal(categorySeed[el])
 			})
 			done()
-		})
-		.catch((err) => {
+		}).catch((err) => {
 			done(err)
 		}).then(() => {
 			Category.destroy({

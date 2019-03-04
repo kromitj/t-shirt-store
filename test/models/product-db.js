@@ -11,24 +11,20 @@ const { Product, Category } = require('../../models')
 
 describe('Product to DB', () => {
 	it("can find the first record", (done) => {
-		Product.findByPk(1)
-		.then(product => {
+		Product.findByPk(1).then(product => {
 		  expect(product.get('price')).to.equal('14.99')		
 		  done()	  
-		})
-		.catch((err) => {
+		}).catch((err) => {
 			done(err)
 		})
 	})
 	it("can create a new Product and save it to the db", (done) => {
-		Product.create(productSeed)
-		.then((product) => {
+		Product.create(productSeed).then((product) => {
 			Object.keys(productSeed).forEach((el) => {
 				expect(product.dataValues[el]).to.equal(productSeed[el])				
 			})
 			done()
-		})
-		.catch((err) => {
+		}).catch((err) => {
 			done(err)
 		}).then(() => {
 			Product.destroy({
