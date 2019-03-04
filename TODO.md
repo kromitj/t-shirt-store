@@ -1,6 +1,6 @@
 Mar 2nd 
 
-1. Set-up testing for sequalize models
+1. Set-up testing for sequalize models and think about how you want to structure it
 2. Split up the included .sql database file into migration and seeds
 	> Make it so you can create and drop the db easier
 3. Design the REST APi

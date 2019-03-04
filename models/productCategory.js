@@ -24,10 +24,11 @@ module.exports = (sequelize, DataTypes) => {
      key: 'product_id',
    }
   },
-}, {tableName: 'category', timestamps: false},
+}, {tableName: 'product_category', timestamps: false},
 );
 
   ProductCategory.associate = function(models) {
+    
   };
 
   return ProductCategory;

@@ -5,17 +5,21 @@ const sequelize = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   var Category = sequelize.define('Category', {
   category_id: {
+    autoIncrement: true,
     type: DataTypes.INTEGER,
     primaryKey: true,
+    allowNull: false,
   },
   name: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   description: {
-    type: DataTypes.STRING
+    type: DataTypes.STRING,
   },
   department_id: {
    type: DataTypes.INTEGER,
+   allowNull: false,
    references: {
      // This is a reference to another model
      model: models.Department,
@@ -27,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
 );
 
   Category.associate = function(models) {
+    Category.belongsToMany(models.Product, {through: 'ProductCategory', foreignKey: 'category_id', otherKey: 'product_id'})
   };
 
   return Category;

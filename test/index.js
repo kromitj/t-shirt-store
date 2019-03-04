@@ -1,17 +1,58 @@
+var expect = require('chai').expect;
+
 describe('Our application', function() {
 
-  // This is the name of the test
-  it('should understand basic mathematical principles', function(done) {
+  it('should understand basic mathematical principles', function() {
 
-    // We want this test to pass.
-    if (5 == 5) {
-      // If the behavior is as expected, call done with no argument.
+    expect(5).to.equal(5);
+    expect(5).to.not.equal(3);
+
+  });
+
+});
+
+
+var express = require('express'); // (npm install --save express)
+var request = require('supertest');
+
+function createApp() {
+  app = express();
+
+  var router = express.Router();
+  router.route('/').get(function(req, res) {
+    return res.json({goodCall: true});
+  });
+
+  app.use(router);
+
+  return app;
+}
+
+describe('Our server', function() {
+  var app;
+
+  // Called once before any of the tests in this block begin.
+  before(function(done) {
+    app = createApp();
+    app.listen(function(err) {
+      if (err) { return done(err); }
       done();
-    } else {
-      // Otherwise, call done with an error.
-      done(new Error("Not sure what's happened."));
-    }
+    });
+  });
 
+  it('should send back a JSON object with goodCall set to true', function(done) {
+    request(app)
+      .get('/')
+      .set('Content-Type', 'application/json')
+      .expect('Content-Type', /json/)
+      .expect(200, function(err, res) {
+        if (err) { return done(err); }
+        callStatus = res.body.goodCall;
+        expect(callStatus).to.equal(true);
+        res
+        // Done
+        done();
+      });
   });
 
 });
