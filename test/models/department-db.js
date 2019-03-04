@@ -13,6 +13,16 @@ const { Department } = require('../../models')
 
 describe('Department to DB', () => {
 	describe("", () => {
+		it("can find the first record", (done) => {
+			Department.findByPk(1)
+			.then(department => {
+			  expect(department.get('name')).to.equal('Regional')		
+			  done()	  
+			})
+			.catch((err) => {
+				done(err)
+			})
+		})
 		it("can create a new Department and save it to the db", (done) => {
 			Department.create(departmentSeed)
 			.then((department) => {
@@ -31,16 +41,6 @@ describe('Department to DB', () => {
 					console.error(err)
 				})
 			})
-		})		
-		it("can find the first record", (done) => {
-			Department.findByPk(1)
-			.then(department => {
-			  expect(department.get('name')).to.equal('Regional')		
-			  done()	  
-			})
-			.catch((err) => {
-				done(err)
-			})
 		})
 		describe("Not-nullable properties give the proper validation errors", () => {
 			notNullAbles.forEach((property) => {
@@ -52,16 +52,16 @@ describe('Department to DB', () => {
 					})				
 				})
 			})
-		})
+		})	
 		describe("Assossiations: ", () => {
 			it("can find its associated category", (done) => {			
 				Department.findByPk(1).then((department) => {
 					department.getCategories().then((categories) => {
 						expect(categories[0].name).to.equal("French")
 						done()
-					})
-				})
+					}).catch((err) => 	done(err))
+				}).catch((err) => 	done(err))
 			})
-		})
+		})		
 	})
 }) 

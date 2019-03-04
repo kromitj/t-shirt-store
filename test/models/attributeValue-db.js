@@ -13,6 +13,16 @@ const { AttributeValue } = require('../../models')
 
 describe('AttributeValue to DB', () => {
 	describe("", () => {
+		it("can find the first record", (done) => {
+			AttributeValue.findByPk(1)
+			.then(attributeValue => {
+			  expect(attributeValue.get('value')).to.equal('S')		
+			  done()	  
+			})
+			.catch((err) => {
+				done(err)
+			})
+		})
 		it("can create a new AttributeValue and save it to the db", (done) => {
 			AttributeValue.create(attributeValueSeed)
 			.then((attributeValue) => {
@@ -32,7 +42,6 @@ describe('AttributeValue to DB', () => {
 		describe("Not-nullable properties give the proper validation errors", () => {
 			notNullAbles.forEach((property) => {
 				it(`Error thrown for ${property}`, (done) => {
-
 					attributeValueSeed[property] = null
 					AttributeValue.create(attributeValueSeed).catch((err) => {
 						expect(err.name).to.equal('SequelizeValidationError')
@@ -58,16 +67,6 @@ describe('AttributeValue to DB', () => {
 			// 		}).catch((err) => 	done(err))
 			// 	}).catch((err) => done(err)) 
 			// })
-		})
-		it("can find the first record", (done) => {
-			AttributeValue.findByPk(1)
-			.then(attributeValue => {
-			  expect(attributeValue.get('value')).to.equal('S')		
-			  done()	  
-			})
-			.catch((err) => {
-				done(err)
-			})
 		})
 	})
 }) 

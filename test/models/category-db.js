@@ -13,6 +13,16 @@ const { Category } = require('../../models')
 
 describe('Category to DB', () => {
 	describe("", () => {
+		it("can find the first record", (done) => {
+			Category.findByPk(1)
+			.then(category => {
+			  expect(category.get('name')).to.equal('French')		
+			  done()	  
+			})
+			.catch((err) => {
+				done(err)
+			})
+		})
 		it("can create a new Category and save it to the db", (done) => {
 			Category.create(categorySeed)
 			.then((category) => {
@@ -27,13 +37,14 @@ describe('Category to DB', () => {
 					where: {
 						name: categorySeed.name
 					}
+				}).catch((err) => {
+					console.error(err)
 				})
 			})
 		})
 		describe("Not-nullable properties give the proper validation errors", () => {
 			notNullAbles.forEach((property) => {
 				it(`Error thrown for ${property}`, (done) => {
-
 					categorySeed[property] = null
 					Category.create(categorySeed).catch((err) => {
 						expect(err.name).to.equal('SequelizeValidationError')
@@ -58,16 +69,6 @@ describe('Category to DB', () => {
 						done()
 					}).catch((err) => 	done(err))
 				}).catch((err) => done(err)) 
-			})
-		})
-		it("can find the first record", (done) => {
-			Category.findByPk(1)
-			.then(category => {
-			  expect(category.get('name')).to.equal('French')		
-			  done()	  
-			})
-			.catch((err) => {
-				done(err)
 			})
 		})
 	})
