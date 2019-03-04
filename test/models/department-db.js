@@ -23,8 +23,9 @@ describe('Department to DB', () => {
 	it("can create a new Department and save it to the db", (done) => {
 		Department.create(departmentSeed)
 		.then((department) => {
-			expect(department.get("name")).to.equal(departmentSeed.name)
-			expect(department.get("description")).to.equal(departmentSeed.description)
+			Object.keys(departmentSeed).forEach((el) => {
+				expect(department.dataValues[el]).to.equal(departmentSeed[el])
+			})
 			done()
 		})
 		.catch((err) => {
@@ -61,3 +62,5 @@ describe('Department to DB', () => {
 		})
 	})		
 }) 
+
+

@@ -10,16 +10,6 @@ const app = require("../../app")
 const { Attribute } = require('../../models')
 
 describe('Attribute to DB', () => {
-	it("can find the first record", (done) => {
-		Attribute.findByPk(1)
-		.then(attribute => {
-		  expect(attribute.get('name')).to.equal('Size')		
-		  done()	  
-		})
-		.catch((err) => {
-			done(err)
-		})
-	})
 	it("can create a new Attribute and save it to the db", (done) => {
 		Attribute.create(attributeSeed)
 		.then((attribute) => {
@@ -38,6 +28,16 @@ describe('Attribute to DB', () => {
 			})
 		})
 	})		
+	it("can find the first record", (done) => {
+		Attribute.findByPk(1)
+		.then(attribute => {
+		  expect(attribute.get('name')).to.equal('Size')		
+		  done()	  
+		})
+		.catch((err) => {
+			done(err)
+		})
+	})
 	describe("Not-nullable properties give the proper validation errors", () => {
 		notNullAbles.forEach((property) => {
 			it(`Error thrown for ${property}`, (done) => {

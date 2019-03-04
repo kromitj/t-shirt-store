@@ -1,11 +1,9 @@
 const chai = require('chai')
-
-const expect = chai.expect
+	const expect = chai.expect
 
 const seeds = require('../../testSeed')
-
-const categorySeed = seeds.category.seed
-const notNullAbles = seeds.category.nonNull
+	const categorySeed = seeds.category.seed
+	const notNullAbles = seeds.category.nonNull
 
 const app = require("../../app")
 
@@ -25,8 +23,9 @@ describe('Category to DB', () => {
 	it("can create a new Category and save it to the db", (done) => {
 		Category.create(categorySeed)
 		.then((category) => {
-			expect(category.get("name")).to.equal(categorySeed.name)
-			expect(category.get("description")).to.equal(categorySeed.description)	
+			Object.keys(categorySeed).forEach((el) => {
+				expect(category.dataValues[el]).to.equal(categorySeed[el])
+			})
 			done()
 		})
 		.catch((err) => {
