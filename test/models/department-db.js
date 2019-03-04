@@ -3,7 +3,7 @@ const chai = require('chai')
 
 const seeds = require('../../testSeed')
 	const departmentSeed = seeds.department.seed
-	const notNullAbles = seeds.product.nonNull
+	const notNullAbles = seeds.department.nonNull
 
 const app = require("../../app")
 
@@ -38,10 +38,12 @@ describe('Department to DB', () => {
 	})
 	describe("Not-nullable properties give the proper validation errors", () => {
 		notNullAbles.forEach((property) => {
-			it(`Error thrown for ${property}`, (done) => {
+			it(`${property} is null, so error is thrown`, (done) => {
+				const propertyTemp = departmentSeed[property]
 				departmentSeed[property] = null
 				Department.create(departmentSeed).catch((err) => {
 					expect(err.name).to.equal('SequelizeValidationError')
+					departmentSeed[property] = propertyTemp
 					done()
 				})				
 			})

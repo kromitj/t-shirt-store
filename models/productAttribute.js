@@ -7,23 +7,11 @@ module.exports = (sequelize, DataTypes) => {
   var ProductAttribute = sequelize.define('ProductAttribute', {
   product_id: {
     type: DataTypes.INTEGER,
-    primaryKey: true,
-    references: {
-     // This is a reference to another model
-     model: models.Product,
-     // This is the column name of the referenced model
-     key: 'product_id',
-   }
+    primaryKey: true,    
   },
   attribute_id: {
     type: DataTypes.INTEGER,
-    primaryKey: true,
-   references: {
-     // This is a reference to another model
-     model: models.Attribute,
-     // This is the column name of the referenced model
-     key: 'attribute_id',
-   }
+    primaryKey: true,   
   },
 }, {tableName: 'product_attribute', timestamps: false},
 );

@@ -1,7 +1,7 @@
 module.exports = {
 	department: {
 		seed: {
-			"name": "Sale",
+			"name": "Blah",
 	    "description": "Items that nobody wants",    
 		},
 		nonNull: [
@@ -54,6 +54,47 @@ module.exports = {
 		nonNull: [
 			"attribute_id",
 			"value",
+		]
+	},
+	shoppingCart: {
+		seed: {
+			"description": "lorum ipsum plipsum hiptum yum yum",
+			"quantity": 1,
+			"buy_now": false,
+			"quantity": 1,
+			"cart_id": 1,
+			"product_id": 1,
+		},
+		nonNull: [
+			"description",
+			"quantity",
+			"buy_now",
+			"quantity,",
+			"cart_id",
+			"product_id",
+		]
+	},
+	customer: {
+		seed: {
+			"name": "Ned Flander",
+			"email": "email2@email.com",
+			"password": "password",
+			"credit_card": "424242424242",
+			"address_1": "123 blah st",
+			"address_2": "",
+			"city": "Amazon",
+			"region": "Georgia",
+			"postal_code": "55092",
+			"country": "USA",
+			"shipping_region_id": 2,
+			"day_phone": "312-867-5305",
+			"eve_phone": "312-867-5305",
+			"mob_phone": "312-867-5305",
+		},
+		nonNull: [
+			"name",
+			"email",
+			"password",
 		]
 	},
 }

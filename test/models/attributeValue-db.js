@@ -50,14 +50,14 @@ describe('AttributeValue to DB', () => {
 		})
 	})
 	describe("Assossiations: ", () => {
-		// it("can find its associated attribute", (done) => {			
-		// 	AttributeValue.findByPk(1).then((attributeValue) => {
-		// 		attributeValue.getAttribute().then((attribute) => {
-		// 			expect(attribute.name).to.equal("Size")
-		// 			done()
-		// 		}).catch((err) => 	done(err))
-		// 	}).catch((err) => done(err)) 
-		// })
+		it("can find its associated attribute", (done) => {			
+			AttributeValue.findByPk(1).then((attributeValue) => {
+				attributeValue.getAttribute().then((attribute) => {
+					expect(attribute.name).to.equal("Size")
+					done()
+				}).catch((err) => 	done(err))
+			}).catch((err) => done(err)) 
+		})
 		// it("can find its associated products", (done) => {			
 		// 	AttributeValue.findByPk(1).then((attributeValue) => {
 		// 		attributeValue.getProducts().then((products) => {

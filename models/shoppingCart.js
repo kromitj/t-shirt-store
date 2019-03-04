@@ -10,9 +10,10 @@ module.exports = (sequelize, DataTypes) => {
     primaryKey: true,
     allowNull: false,
   },
-  attributes: {
+  description: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: "attributes"
   },
   quantity: {
     type: DataTypes.INTEGER,
@@ -23,11 +24,11 @@ module.exports = (sequelize, DataTypes) => {
      allowNull: false,
      defaultValue: true
   },
-  // added_on: {
-  //   type: DataTypes.DATE,
-  //    allowNull: false,
-  //    default: Date.NOW
-  // },
+  added_on: {
+    type: DataTypes.DATE,
+     allowNull: false,
+     defaultValue: DataTypes.NOW
+  },
   cart_id: {
    type: DataTypes.STRING,
    allowNull: false,
@@ -40,8 +41,8 @@ module.exports = (sequelize, DataTypes) => {
 );
 
   ShoppingCart.associate = function(models) {
-    
+    ShoppingCart.hasOne(models.Product, {foreignKey: 'product_id'})
   };
 
-  return Category;
+  return ShoppingCart;
 };

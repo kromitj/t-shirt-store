@@ -1,3 +1,6 @@
+Mar 4th
+1. 
+
 Mar 2nd 
 1. Get Poduct:hasMany :AttributeValues working
 2. Split up the included .sql database file into migration and seeds

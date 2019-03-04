@@ -50,7 +50,7 @@ describe('Attribute to DB', () => {
 		})
 	})
 	describe("Assossiations: ", () => {
-		it("can find its associated category", (done) => {			
+		it("can find its associated attributeValues: ", (done) => {			
 			Attribute.findByPk(1).then((attribute) => {
 				attribute.getAttributeValues().then((attributeValues) => {
 					expect(attributeValues[0].value).to.equal("S")

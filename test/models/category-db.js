@@ -38,10 +38,12 @@ describe('Category to DB', () => {
 	})
 	describe("Not-nullable properties give the proper validation errors", () => {
 		notNullAbles.forEach((property) => {
-			it(`Error thrown for ${property}`, (done) => {
+			it(`${property} is null, so error is thrown`, (done) => {
+				const propertyTemp = categorySeed[property]
 				categorySeed[property] = null
 				Category.create(categorySeed).catch((err) => {
 					expect(err.name).to.equal('SequelizeValidationError')
+					categorySeed[property] = propertyTemp
 					done()
 				})				
 			})
@@ -65,4 +67,4 @@ describe('Category to DB', () => {
 			}).catch((err) => done(err)) 
 		})
 	})
-}) 
+})  

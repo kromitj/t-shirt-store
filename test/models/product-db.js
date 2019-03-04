@@ -6,6 +6,7 @@ const seeds = require('../../testSeed')
 	const notNullAbles = seeds.product.nonNull
 
 const app = require("../../app")
+console.log("yoooooooooooooooo")
 
 const { Product, Category } = require('../../models')
 
@@ -49,32 +50,23 @@ describe('Product to DB', () => {
 			})
 		})
 	})
-	// describe("Assossiations: ", () => {
-		// it("can find its associated category", (done) => {			
-		// 	Product.findByPk(1).then((product) => {
-		// 		product.getCategory().then((category) => {
-		// 			expect(category.name).to.equal("French")
-		// 			done()
-		// 		})
-		// 	})
-		// })
-		// it("can find its associated attributeValues", (done) => {			
-			// Product.findByPk(1).then((product) => {
-			// 	product.getAttributeValues().then((attrubuteValues) => {
-			// 		console.log("yoooooooooooooooo")
-			// 		expect(attrubuteValues[0].name).to.equal("French")
-			// 		done()
-			// 	})
-			// })
-		// })
-	// })
-	// afterEach(() => {
-	// 	Product.destroy({
-	// 		where: {
-	// 			name: productSeed.name
-	// 		}
-	// 	}).catch((err) => {
-	// 		console.error(err)
-	// 	})
-	// })
+	describe("Assossiations: ", () => {
+		it("can find its associated category", (done) => {			
+			Product.findByPk(1).then((product) => {
+				product.getCategory().then((category) => {
+					expect(category.name).to.equal("French")
+					done()
+				})
+			})
+		})
+		xit("can find its associated attributeValues", (done) => {			
+			Product.findByPk(1).then((product) => {
+				product.getAttributeValues().then((attrubuteValues) => {
+					console.log("yoooooooooooooooo")
+					expect(attrubuteValues[0].name).to.equal("French")
+					done()
+				})
+			})
+		})
+	})
 }) 
