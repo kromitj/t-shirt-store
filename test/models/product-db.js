@@ -1,30 +1,15 @@
 const chai = require('chai')
-const chaihttp = require('chai-http')
-const app = require("../../app")
 
 const expect = chai.expect
-const should = chai.should
+
+const seeds = require('../../testSeed')
+
+const productSeed = seeds.product.seed
+const notNullAbles = seeds.product.nonNull
+
+const app = require("../../app")
 
 const { Product, Category } = require('../../models')
-
-const productSeed = {
-    "name": "BLah BLah",
-    "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
-    "price": "22.95",
-    "discounted_price": "17.95",
-    "image": "chartres-cathedral.gif",
-    "image_2": "chartres-cathedral-2.gif",
-    "thumbnail": "chartres-cathedral-thumbnail.gif",
-    "display": 1
-  }
-
-const notNullAbles = [
-	"name",
-	"description",
-	"price",
-	"discounted_price",
-	"display",
-]
 
 describe('Product to DB', () => {
 		it("can create a new Product and save it to the db", (done) => {

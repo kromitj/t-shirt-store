@@ -1,21 +1,15 @@
 const chai = require('chai')
-const chaihttp = require('chai-http')
-const app = require("../../app")
 
 const expect = chai.expect
 
+const seeds = require('../../testSeed')
+
+const attributeValueSeed = seeds.attributeValue.seed
+const notNullAbles = seeds.attributeValue.nonNull
+
+const app = require("../../app")
+
 const { AttributeValue } = require('../../models')
-
-const attributeValueSeed = {
-    "value": "XXXXXXXXXXXXXXXXXXL",
-    "attribute_id": 1
-    
-  }
-
-  const notNullAbles = [
-	"attribute_id",
-	"value",
-]
 
 describe('AttributeValue to DB', () => {
 	describe("", () => {

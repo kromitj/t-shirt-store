@@ -1,19 +1,15 @@
 const chai = require('chai')
-const chaihttp = require('chai-http')
-const app = require("../../app")
 
 const expect = chai.expect
 
-const { Department } = require('../../models')
+const seeds = require('../../testSeed')
 
-const departmentSeed = {
-    "name": "Sale",
-    "description": "Items that nobody wants",
-    
-  }
-const notNullAbles = [
-	"name",
-]
+const departmentSeed = seeds.department.seed
+const notNullAbles = seeds.product.nonNull
+
+const app = require("../../app")
+
+const { Department } = require('../../models')
 
 describe('Department to DB', () => {
 	describe("", () => {

@@ -1,22 +1,15 @@
 const chai = require('chai')
-const chaihttp = require('chai-http')
-const app = require("../../app")
 
 const expect = chai.expect
 
+const seeds = require('../../testSeed')
+
+const categorySeed = seeds.category.seed
+const notNullAbles = seeds.category.nonNull
+
+const app = require("../../app")
+
 const { Category } = require('../../models')
-
-const categorySeed = {
-    "name": "Dumpster",
-    "description": "Items that are in the dumster....",
-    "department_id": 4
-    
-  }
-
-  const notNullAbles = [
-	"department_id",
-	"name",
-]
 
 describe('Category to DB', () => {
 	describe("", () => {

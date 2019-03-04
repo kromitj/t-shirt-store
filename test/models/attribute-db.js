@@ -1,18 +1,15 @@
 const chai = require('chai')
-const chaihttp = require('chai-http')
-const app = require("../../app")
 
 const expect = chai.expect
 
-const { Attribute } = require('../../models')
+const seeds = require('../../testSeed')
 
-const attributeSeed = {
-    "name": "Sale",
-    
-  }
-const notNullAbles = [
-	"name",
-]
+const attributeSeed = seeds.attribute.seed
+const notNullAbles = seeds.attribute.nonNull
+
+const app = require("../../app")
+
+const { Attribute } = require('../../models')
 
 describe('Attribute to DB', () => {
 	describe("", () => {
