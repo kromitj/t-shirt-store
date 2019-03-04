@@ -1,11 +1,9 @@
 const chai = require('chai')
-
-const expect = chai.expect
+	const expect = chai.expect
 
 const seeds = require('../../testSeed')
-
-const productSeed = seeds.product.seed
-const notNullAbles = seeds.product.nonNull
+	const productSeed = seeds.product.seed
+	const notNullAbles = seeds.product.nonNull
 
 const app = require("../../app")
 
