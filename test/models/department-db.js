@@ -12,7 +12,6 @@ const app = require("../../app")
 const { Department } = require('../../models')
 
 describe('Department to DB', () => {
-	describe("", () => {
 		it("can find the first record", (done) => {
 			Department.findByPk(1)
 			.then(department => {
@@ -63,5 +62,4 @@ describe('Department to DB', () => {
 				}).catch((err) => 	done(err))
 			})
 		})		
-	})
 }) 

@@ -12,6 +12,16 @@ const app = require("../../app")
 const { Product, Category } = require('../../models')
 
 describe('Product to DB', () => {
+		it("can find the first record", (done) => {
+			Product.findByPk(1)
+			.then(product => {
+			  expect(product.get('price')).to.equal('14.99')		
+			  done()	  
+			})
+			.catch((err) => {
+				done(err)
+			})
+		})
 		it("can create a new Product and save it to the db", (done) => {
 			Product.create(productSeed)
 			.then((product) => {
@@ -50,17 +60,6 @@ describe('Product to DB', () => {
 				})
 			})
 		})
-		// it("can find the first record", (done) => {
-		// 	Product.findByPk(1)
-		// 	.then(product => {
-		// 	  expect(product.get('price')).to.equal('14.99')		
-		// 	  done()	  
-		// 	})
-		// 	.catch((err) => {
-		// 		done(err)
-		// 	})
-
-		// })
 		// describe("Assossiations: ", () => {
 			// it("can find its associated category", (done) => {			
 			// 	Product.findByPk(1).then((product) => {
