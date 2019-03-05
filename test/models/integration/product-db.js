@@ -1,14 +1,14 @@
 const chai = require('chai')
 	const expect = chai.expect
 
-const seeds = require('../../testSeed')
+const seeds = require('../../../testSeed')
 	const productSeed = seeds.product.seed
 	const notNullAbles = seeds.product.nonNull
 
-const app = require("../../app")
+const app = require("../../../app")
 console.log("yoooooooooooooooo")
 
-const { Product, Category } = require('../../models')
+const { Product, Category } = require('../../../models')
 
 describe('Product to DB', () => {
 	it("can find the first record", (done) => {

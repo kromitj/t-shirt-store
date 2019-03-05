@@ -21,7 +21,6 @@ module.exports = {
 	},
 	product: {
 		seed: {
-			"name": "BLah BLah",
 	    "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
 	    "price": "22.95",
 	    "discounted_price": "17.95",

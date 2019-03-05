@@ -4,4 +4,5 @@
 ![Pic of Schema](./Schema.png "Schema")
 
 ##Mobile Landing Page
-![Pic of Schema](./WireFrames/Mob-Landing.png "Schema")
+
+![Pic of Schema](./WireFrames/Mobile-Landing.png "Schema")

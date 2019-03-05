@@ -45,7 +45,7 @@ module.exports = (sequelize, DataTypes) => {
   },
   shipping_region_id: {
     type: DataTypes.INTEGER,
-    allowNull: false,
+    // allowNull: false,
     defaultValue: 1
   },
   day_phone: {

@@ -7,16 +7,23 @@
     "test": "find ./test -name '*.js' | xargs mocha --exit -R list"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "chai-http": "^4.2.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
+    "faker": "^4.1.0",
+    "gravatar": "^1.8.0",
+    "jsonwebtoken": "^8.5.0",
     "morgan": "~1.9.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
     "sequelize": ">=3.20.0",
     "sequelize-cli": "^5.4.0",
-    "sinon": "^7.2.6"
+    "sinon": "^7.2.6",
+    "validator": "^10.11.0"
   },
   "devDependencies": {
     "chai": "^4.2.0",

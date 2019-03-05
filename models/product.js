@@ -1,8 +1,6 @@
 'use strict';
 
 const sequelize = require('sequelize');
-const ProductCategory = require('./productCategory')
-console.log(ProductCategory)
 
 module.exports = (sequelize, DataTypes) => {
   var Product = sequelize.define('Product', {
