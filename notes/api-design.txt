@@ -3,14 +3,21 @@ title: t-shirt-store API
 baseUri: http://t-shirtstore.com/{version}
 version: v1
 
+#%RAML 1.0
+title: t-shirt-store API
+baseUri: http://t-shirtstore.com/{version}
+version: v1
+
 /api:
   /oauth/access_token:
-  post:
-    queryParameters: 
-      client_id:
+    description: generates jwt token
+    post:
+      queryParameters: 
+        client_id:
   
-  /products:
+  /products:    
     get:
+      description: returns products that match the queryParameters
       queryParameters: 
         department:
         category:
@@ -21,44 +28,68 @@ version: v1
         200:
     /product_id:
       get:
+        description: returns product-details 
         responses: 
           200:
-      post:
-        queryParameters: 
-          oauth:
-          cart_id:
-          product:
-          quantity:
-        responses: 
-          200: 
                 
   /users:
     /register:
+      get:
+        description: get sign-up form
+        
       post:
+        description: create new user action
         queryParameters: 
           name:
           email:
-          password:         
+          password: 
+        responses: 
+          200:
+            description: responds with users/login route
     /login:
+      get:
+        description: get log-in form
       post:
+        description: sign-in action new session
         queryParameters: 
           email:
           password:
+        responses: 
+          200:
+            description: responds with basic user info
     
     /current:
       get:
-        description: protected route
+        description: protected route, returns detailed user information
         responses: 
           200:
-            body: 
-              application/json:
     /profile:
       get:
-        description: returns a form to add additional personal info
+        description: protected route, returns a form to add additional personal info
         queryParameters: 
           oauth:
-            description: protected route
-           
+    /order:      
+      /order_id:
+        get:          
+          description: protected route, show order action
+          queryParameters:             
+            oauth:
+            order_id:
+        put:
+          description: update an order before shipped
+          queryParameters: 
+            oauth:
+            props_to_update:
+          responses: 
+            200:
+              description: sends an email to customer confirming the change
+        delete:
+          description: cancels an order before shipped
+          queryParameters: 
+            oauth:
+          responses: 
+            200:
+              description: sends an email confirming or denying the cancelation
               
   /cart:   
     /cart_id:
@@ -76,6 +107,7 @@ version: v1
     
       /products:
         get:
+          description: show cart action
           queryParameters: 
             oauth:
           responses: 
@@ -108,8 +140,17 @@ version: v1
           responses: 
             200:
               description: returns an updated cart cataloge
+  
         
           
+          
+          
+                
+          
+        
+    
+    
+    
           
           
                 
