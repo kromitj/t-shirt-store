@@ -1,13 +1,13 @@
 const chai = require('chai')
 	const expect = chai.expect
 
-const seeds = require('../../testSeed')
+const seeds = require('../../../testSeed')
 	const customerSeed = seeds.customer.seed
 	const notNullAbles = seeds.customer.nonNull
 
-const app = require("../../app")
+const app = require("../../../app")
 
-const { Customer } = require('../../models')
+const { Customer } = require('../../../models')
 
 describe('Customer to DB', () => {
 	it("can create a new Customer and save it to the db", (done) => {
@@ -29,8 +29,8 @@ describe('Customer to DB', () => {
 		})
 	})
 	it("can find the first record", (done) => {
-		Customer.findByPk(4).then(customer => {
-		  expect(customer.get('name')).to.equal('Wolf Blitzer')		
+		Customer.findByPk(1).then(customer => {
+		  expect(customer.get('name')).to.equal('Mitch Kroska')		
 		  done()	  
 		}).catch((err) => {
 			done(err)

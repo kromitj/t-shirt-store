@@ -1,13 +1,13 @@
 const chai = require('chai')
 	const expect = chai.expect
 
-const seeds = require('../../testSeed')
+const seeds = require('../../../testSeed')
 	const categorySeed = seeds.category.seed
 	const notNullAbles = seeds.category.nonNull
 
-const app = require("../../app")
+const app = require("../../../app")
 
-const { Category } = require('../../models')
+const { Category } = require('../../../models')
 
 describe('Category to DB', () => {
 	it("can find the first record", (done) => {

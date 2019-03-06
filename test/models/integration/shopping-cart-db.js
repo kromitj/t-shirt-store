@@ -1,12 +1,11 @@
 const chai = require('chai')
 	const expect = chai.expect
-const seeds = require('../../testSeed')
+const seeds = require('../../../testSeed')
 	const shoppingCartSeed = seeds.shoppingCart.seed
 	const notNullAbles = seeds.shoppingCart.nonNull
+const app = require("../../../app")
 
-const app = require("../../app")
-
-const { ShoppingCart } = require('../../models')
+const { ShoppingCart } = require('../../../models')
 
 describe('ShoppingCart to DB', () => {
 	it("can create a new ShoppingCart and save it to the db", (done) => {
@@ -28,9 +27,9 @@ describe('ShoppingCart to DB', () => {
 		})
 	})		
 	it("can find the first record", (done) => {
-		ShoppingCart.findByPk(1)
+		ShoppingCart.findOne({where: {item_id: 15}})
 		.then(shoppingCart => {
-		  expect(shoppingCart.get('description')).to.equal('djfjdskfldhskfjdhskafjhdlsakfjdhslkj')		
+		  expect(shoppingCart.get('description')).to.equal("lorum ipsum plipsum hiptum yum yum")		
 		  done()	  
 		})
 		.catch((err) => {
@@ -50,9 +49,9 @@ describe('ShoppingCart to DB', () => {
 	})
 	describe("Assossiations: ", () => {
 		it("can find its associated shoppingCartValues: ", (done) => {			
-			ShoppingCart.findByPk(1).then((shoppingCart) => {
+			ShoppingCart.findByPk(15).then((shoppingCart) => {
 				shoppingCart.getProduct().then((shoppingCartProduct) => {
-					expect(shoppingCartProduct.description).to.equal("This beautiful and iconic T-shirt will no doubt lead you to your own triumph.")
+					expect(shoppingCartProduct.description).to.equal("Commemorating the 800th anniversary of the famed cathedral.")
 					done()
 				})
 			})

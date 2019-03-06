@@ -8,3 +8,27 @@ Mar 2nd
 3. Design the REST APi
 4  Think about security and what urls will need an validation-token
 5. Look at the sql procedures and figure out which ones are useful
+
+
+Ideas on Quering Products
+
+1. pipe through differant filters
+	"department" -> "category" -> "search" -> "attributes" ->  out
+
+	if not 
+
+
+																department?
+
+																yes      no
+													category?     ShowAll
+											yes           no
+							FilterByCategory   AllCategories
+														Search?
+												yes	      	no
+										FilterSearch      
+														Attributes?
+														yes			no
+											
+
+

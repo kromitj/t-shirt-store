@@ -142,24 +142,6 @@ version: v1
               description: returns an updated cart cataloge
   
         
-          
-          
-          
-                
-          
-        
-    
-    
-    
-          
-          
-                
-          
-        
-    
-    
-    
-
 ##Here is an example of proposed api structure:
 
 http://t-shirtstore.com/v1/api/products?department=regional&category=french&color=blue&size=small&search=black+sabbith
@@ -167,3 +149,20 @@ http://t-shirtstore.com/v1/api/products?department=regional&category=french&colo
 
 ##more read friendly but heavly nested:
 http://t-shirtstore.com/v1/api/products/:regional/:french/?color=blue&size=small&search=black+sabbith
+          
+          
+
+                
+          
+        
+    
+    
+    
+          
+          
+                
+          
+        
+    
+    
+    

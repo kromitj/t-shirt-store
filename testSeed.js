@@ -21,6 +21,7 @@ module.exports = {
 	},
 	product: {
 		seed: {
+			"name": "Skate Board",
 	    "description": "\"The Fur Merchants\". Not all the beautiful stained glass in the great cathedrals depicts saints and angels! Lay aside your furs for the summer and wear this beautiful T-shirt!",
 	    "price": "22.95",
 	    "discounted_price": "17.95",
@@ -57,7 +58,7 @@ module.exports = {
 	},
 	shoppingCart: {
 		seed: {
-			"description": "lorum ipsum plipsum hiptum yum yum",
+			"description": "smorgis morgis horgis grrrrrrrrrr",
 			"quantity": 1,
 			"buy_now": false,
 			"quantity": 1,

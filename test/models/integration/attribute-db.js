@@ -1,13 +1,13 @@
 const chai = require('chai')
 	const expect = chai.expect
 
-const seeds = require('../../testSeed')
+const seeds = require('../../../testSeed')
 	const attributeSeed = seeds.attribute.seed
 	const notNullAbles = seeds.attribute.nonNull
 
-const app = require("../../app")
+const app = require("../../../app")
 
-const { Attribute } = require('../../models')
+const { Attribute } = require('../../../models')
 
 describe('Attribute to DB', () => {
 	it("can create a new Attribute and save it to the db", (done) => {

@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "start": "nodemon ./bin/www",
     "test": "find ./test -name '*.js' | xargs mocha --exit -R list"
   },
   "dependencies": {
@@ -11,6 +11,7 @@
     "chai-http": "^4.2.1",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
+    "dotenv": "^6.2.0",
     "express": "~4.16.0",
     "faker": "^4.1.0",
     "gravatar": "^1.8.0",
@@ -18,6 +19,7 @@
     "morgan": "~1.9.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
+    "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
     "sequelize": ">=3.20.0",

@@ -1,13 +1,13 @@
 const chai = require('chai')
 	const expect = chai.expect
 
-const seeds = require('../../testSeed')
+const seeds = require('../../../testSeed')
 	const departmentSeed = seeds.department.seed
 	const notNullAbles = seeds.department.nonNull
 
-const app = require("../../app")
+const app = require("../../../app")
 
-const { Department } = require('../../models')
+const { Department } = require('../../../models')
 
 describe('Department to DB', () => {
 	it("can find the first record", (done) => {

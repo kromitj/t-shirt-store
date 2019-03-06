@@ -2,14 +2,14 @@ const chai = require('chai')
 
 const expect = chai.expect
 
-const seeds = require('../../testSeed')
+const seeds = require('../../../testSeed')
 
 const attributeValueSeed = seeds.attributeValue.seed
 const notNullAbles = seeds.attributeValue.nonNull
 
-const app = require("../../app")
+const app = require("../../../app")
 
-const { AttributeValue } = require('../../models')
+const { AttributeValue } = require('../../../models')
 
 describe('AttributeValue to DB', () => {
 	it("can find the first record", (done) => {

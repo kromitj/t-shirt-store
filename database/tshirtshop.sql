@@ -448,7 +448,7 @@ CREATE PROCEDURE catalog_get_products_on_department(
   IN inProductsPerPage INT, IN inStartItem INT)
 BEGIN
   PREPARE statement FROM
-    "SELECT DISTINCT p.product_id, p.name,
+    "SELECT DISTINCT p.product_id, p.name, p.display,
                      IF(LENGTH(p.description) <= ?,
                         p.description,
                         CONCAT(LEFT(p.description, ?),
@@ -482,7 +482,7 @@ BEGIN
 END$$
 
 -- Create catalog_get_products_on_catalog stored procedure
-CREATE PROCEDURE catalog_get_products_on_catalog(
+ALTER PROCEDURE catalog_get_products_on_catalog(
   IN inShortProductDescriptionLength INT,
   IN inProductsPerPage INT, IN inStartItem INT)
 BEGIN
@@ -495,7 +495,7 @@ BEGIN
               price, discounted_price, thumbnail
      FROM     product
      WHERE    display = 1 OR display = 3
-     ORDER BY display DESC
+     ORDER BY p.display DESC
      LIMIT    ?, ?";
 
   SET @p1 = inShortProductDescriptionLength;
