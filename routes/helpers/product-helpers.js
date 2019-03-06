@@ -1,13 +1,18 @@
-let models  = require('../../models');
+const models  = require('../../models');
+const errorMsgs = require('./error-messages')
 
-const filterByDeptnCat = function(department, category, callback) {
+const filterByDeptnCat = (department, category, callback) => {
 	if (!department) {
-		 models.Product.findAll().then((products, search, color, size) => {
+		 models.Product.findAll().then((products) => {
 		 	return callback(products)
 		 })
 	} else if (!category) {
 			models.sequelize.query('call catalog_get_products_on_department(:inDepartmentId, :inShortProductDescriptionLength,:inProductsPerPage, :inStartItem)',
 			{ replacements: { inDepartmentId: parseInt(department), inShortProductDescriptionLength: 15,inProductsPerPage: 20, inStartItem: 0}}).then((products) => {
+		 	if (products.length === 0) {
+		 		const err = errorMsgs.department.idNotFound
+		 		return callback(products, err)
+		 	}
 		 	return callback(products)
 		 })
 	} else {
@@ -18,7 +23,7 @@ const filterByDeptnCat = function(department, category, callback) {
 	}
 }
 
-const filterBySearch = function(search, products, callback) {
+const filterBySearch = (search, products, callback) => {
 	if (!search)  return callback(products)
 	else {
 		const filtered = products.filter((product) => {
@@ -27,7 +32,7 @@ const filterBySearch = function(search, products, callback) {
 		return callback(filtered)
 	}
 }
-const filterByAtts = function(attributes, products, callback) {
+const filterByAtts = (attributes, products, callback) => {
 	if (attributes.every(attribute => attribute === null)) return callback(products)
 	const product_ids = products.map((product) => {
      return product.product_id
