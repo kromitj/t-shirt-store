@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
 		if (!search) return res.json(products)
 			filterBySearch(search, products, function(searchProducts) {
 				if (!color && !size) return res.json(searchProducts)
-				filterByAtts(color, size, searchProducts, function(attProducts) {
+				filterByAtts( [color, size], searchProducts, function(attProducts) {
 					return res.json(attProducts)
 				})
 			})

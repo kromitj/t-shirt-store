@@ -27,29 +27,27 @@ const filterBySearch = function(search, products, callback) {
 		return callback(filtered)
 	}
 }
-const filterByAtts = function(color, size, products, models, callback) {
-	if (!color && !size) { return callback(products)} 
-	else {
-		const product_ids = products.map((product) => {
-       return product.product_id
-   	})
-  	product_ids.forEach((p_id, i) => {
-  		models.sequelize.query('call catalog_get_attributes_not_assigned_to_product(:inProductId)',
-  				{ replacements: { inProductId: p_id}}).then((non_atts) => {
-  					const productHasAtts = true
-  					non_atts.forEach((att) => {
-  						if (attributes.includes(non_att.attribute_value) ) {
-  							productHasAtt = false
-  						}
-  					})
-  					if (!productHasAtts) {
-  						const idx  = product_ids.indexOf(p_id)
-  						products.splice(idx, 1)
-  					}
-						return callback(products)
-  		})
-  	}) 
-	}
+const filterByAtts = function(attributes, products, models, callback) {
+	if (attributes.every(attribute => attribute === null)) return callback(products)
+	const product_ids = products.map((product) => {
+     return product.product_id
+ 	})
+	product_ids.forEach((p_id, i) => {
+		models.sequelize.query('call catalog_get_attributes_not_assigned_to_product(:inProductId)',
+				{ replacements: { inProductId: p_id}}).then((non_atts) => {
+					const productHasAtts = true
+					non_atts.forEach((att) => {
+						if (attributes.includes(non_att.attribute_value) ) {
+							productHasAtt = false
+						}
+					})
+					if (!productHasAtts) {
+						const idx  = product_ids.indexOf(p_id)
+						products.splice(idx, 1)
+					}
+					return callback(products)
+		})
+  }) 
 }
 
 module.exports = {
