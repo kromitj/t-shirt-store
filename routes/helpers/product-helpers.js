@@ -27,7 +27,7 @@ const filterBySearch = function(search, products, callback) {
 		return callback(filtered)
 	}
 }
-const filterByAtts = function(attributes, products, models, callback) {
+const filterByAtts = function(attributes, products, callback) {
 	if (attributes.every(attribute => attribute === null)) return callback(products)
 	const product_ids = products.map((product) => {
      return product.product_id
@@ -50,8 +50,30 @@ const filterByAtts = function(attributes, products, models, callback) {
   }) 
 }
 
+const generateQueryParams = (queryParams) => {
+	let limit = 20,
+			query = {},
+			offset = 0,
+			department = null,
+			category = null,
+			color = null,
+			size = null,
+			search = null
+
+  if(typeof queryParams.limit !== 'undefined'){limit = queryParams.limit}
+  if(typeof queryParams.offset !== 'undefined'){offset = queryParams.offset }
+  if(typeof queryParams.department !== 'undefined'){ department  = queryParams.department}
+  if(typeof queryParams.category !== 'undefined'){ category  = queryParams.category }
+  if(typeof queryParams.color !== 'undefined'){ color  = queryParams.color }
+  if(typeof queryParams.size !== 'undefined'){ size  = queryParams.size}
+  if(typeof queryParams.search !== 'undefined'){search  = queryParams.search}
+
+  return { query, offset, department, category, color, size, search }
+}
+
 module.exports = {
 	filterByDeptnCat,
 	filterBySearch,
-	filterByAtts
+	filterByAtts,
+	generateQueryParams
 }
