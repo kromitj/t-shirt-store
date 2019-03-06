@@ -18,6 +18,11 @@ const filterByDeptnCat = (department, category, callback) => {
 	} else {
 		models.sequelize.query('call catalog_get_category_products(:inCategoryId)', 
 		{ replacements: {inCategoryId: category, inShortProductDescriptionLength: 15, inProductsPerPage: 20, inStartItem: 0}}).then((products) => {
+			
+			if (products.length === 0) {
+		 		const err = errorMsgs.category.idNotFound
+		 		return callback(products, err)
+		 	} 
 			return callback(products)
 		})
 	}
