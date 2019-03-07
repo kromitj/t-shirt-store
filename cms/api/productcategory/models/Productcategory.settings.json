@@ -1,0 +1,27 @@
+{
+  "connection": "default",
+  "collectionName": "product_category",
+  "info": {
+    "name": "productcategory",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "product_id": {
+      "default": "",
+      "unique": true,
+      "type": "integer",
+      "required": true
+    },
+    "category_id": {
+      "default": "",
+      "unique": true,
+      "type": "integer",
+      "required": true
+    }
+  }
+}

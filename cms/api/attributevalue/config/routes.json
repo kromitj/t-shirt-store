@@ -1,0 +1,52 @@
+{
+  "routes": [
+    {
+      "method": "GET",
+      "path": "/attributevalues",
+      "handler": "Attributevalue.find",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/attributevalues/count",
+      "handler": "Attributevalue.count",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/attributevalues/:id",
+      "handler": "Attributevalue.findOne",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/attributevalues",
+      "handler": "Attributevalue.create",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "PUT",
+      "path": "/attributevalues/:id",
+      "handler": "Attributevalue.update",
+      "config": {
+        "policies": []
+      }
+    },
+    {
+      "method": "DELETE",
+      "path": "/attributevalues/:id",
+      "handler": "Attributevalue.destroy",
+      "config": {
+        "policies": []
+      }
+    }
+  ]
+}

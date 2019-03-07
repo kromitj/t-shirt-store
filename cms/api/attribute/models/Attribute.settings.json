@@ -1,0 +1,26 @@
+{
+  "connection": "default",
+  "collectionName": "attribute",
+  "info": {
+    "name": "attribute",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "attribute_id": {
+      "default": "",
+      "unique": true,
+      "type": "integer",
+      "required": true
+    }
+  }
+}

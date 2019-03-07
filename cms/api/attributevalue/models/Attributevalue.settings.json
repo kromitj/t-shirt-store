@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "attribute_value",
+  "info": {
+    "name": "attributevalue",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "attribute_value_id": {
+      "primaryKey": true,
+      "default": "",
+      "unique": true,
+      "type": "integer",
+      "required": true
+    },
+    "value": {
+      "columnName": "value",
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+     "attribute_id": {
+      "model": "attribute"
+    }
+  }
+}

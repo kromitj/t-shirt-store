@@ -20,7 +20,7 @@ describe('Product Route API', function () {
     	expect(response.type).to.equal('application/json')
       expect(response.body.length).to.equal(101)
       done()
-  	})
+  	}).catch((err) => done(err))
  	});
  	it('respond with all products on department', function (done) {
     request(app)
@@ -32,7 +32,7 @@ describe('Product Route API', function () {
     	const productParams = Object.keys(response.body[0])
       expect(productParams.toString()).to.equal([ 'product_id',  'name',  'display',  'description',  'price',  'discounted_price',  'thumbnail' ].toString())
       done()
-  	})
+  	}).catch((err) => done(err))
  	});
  	it('respond with proper error given invalid department_id', function (done) {
     request(app)
@@ -43,7 +43,7 @@ describe('Product Route API', function () {
     	expect(response.type).to.equal('application/json')
       expect(response.body).to.equal(errorMsgs.department.idNotFound)
       done()
-  	})
+  	}).catch((err) => done(err))
  	});
  	it('respond with all products on category', function (done) {
     request(app)
@@ -55,7 +55,7 @@ describe('Product Route API', function () {
     	expect(response.type).to.equal('application/json')
       expect(productParams.toString()).to.equal([ 'product_id',  'name',  'description',  'price',  'discounted_price' ].toString())
       done()
-  	})
+  	}).catch((err) => done(err))
  	});
  	it('respond with proper error given invalid category_id', function (done) {
     request(app)
@@ -66,7 +66,7 @@ describe('Product Route API', function () {
     	expect(response.type).to.equal('application/json')
       expect(response.body).to.equal(errorMsgs.category.idNotFound)
       done()
-  	})
+  	}).catch((err) => done(err))
  	});
  	it('respond with products that match the search query', function (done) {
     request(app)
@@ -78,7 +78,7 @@ describe('Product Route API', function () {
     	expect(response.type).to.equal('application/json')
       expect(product.description).to.equal("This fancy chicken is perhaps the most beloved of all French symbols. Unfortunately, there are only a few hundred left, so you'd better get your T-shirt now!")
       done()
-  	})
+  	}).catch((err) => done(err))
  	});
 });
 
