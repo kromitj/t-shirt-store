@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.define('department', {
+  const Department = sequelize.define('department', {
     'department_id': {
       type: DataTypes.INTEGER,
       primaryKey: true 
@@ -17,9 +17,10 @@ module.exports = (sequelize, DataTypes) => {
     
   });
 
-  Model.associate = (models) => {
+  Department.associate = (models) => {
+    Department.hasMany(models.category, {foreignKey: 'department_id'})
   };
 
-  return Model;
+  return Department;
 };
 

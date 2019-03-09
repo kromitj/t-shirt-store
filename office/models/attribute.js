@@ -1,6 +1,7 @@
+
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.define('attribute', {
-    attribute_id: {
+  const Attribute = sequelize.define('attribute', {
+  attribute_id: {
     autoIncrement: true,
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -10,23 +11,12 @@ module.exports = (sequelize, DataTypes) => {
     type: DataTypes.STRING,
     allowNull: false,
   },
-    'created_at': {
-      type: DataTypes.DATE,
-    },
-    'updated_at': {
-      type: DataTypes.DATE,
-    },
-  }, {
-    tableName: 'attribute',
-    underscored: true,
-    
-    
-  });
+}, {tableName: 'attribute', timestamps: false},
+);
 
-  Model.associate = (models) => {
-    
+  Attribute.associate = function(models) {
+    Attribute.hasMany(models.attribute_value, {foreignKey: 'attribute_id'})
   };
 
-  return Model;
+  return Attribute;
 };
-

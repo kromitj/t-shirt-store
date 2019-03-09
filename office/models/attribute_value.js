@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-  const Model = sequelize.define('attribute_value', {
+  const AttributeValue = sequelize.define('attribute_value', {
     'attribute_value_id': {
       type: DataTypes.INTEGER,
       primaryKey: true 
@@ -23,9 +23,11 @@ module.exports = (sequelize, DataTypes) => {
     
   });
 
-  Model.associate = (models) => {
+  AttributeValue.associate = (models) => {
+    AttributeValue.belongsTo(models.attribute, {foreignKey: 'attribute_id'})
+    AttributeValue.hasMany(models.product_attribute, {foreignKey: 'attribute_value_id'})
   };
 
-  return Model;
+  return AttributeValue;
 };
 
