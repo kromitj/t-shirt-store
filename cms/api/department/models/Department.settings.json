@@ -1,0 +1,31 @@
+{
+  "connection": "default",
+  "collectionName": "department",
+  "info": {
+    "name": "department",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": false,
+    "comment": ""
+  },
+  "attributes": {
+    "department_id": {
+      "unique": true,
+      "required": true,
+      "default": "",
+      "type": "integer",
+      "primaryKey": true
+    },
+    "name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

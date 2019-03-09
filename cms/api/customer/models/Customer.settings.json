@@ -1,0 +1,81 @@
+{
+  "connection": "default",
+  "collectionName": "customer",
+  "info": {
+    "name": "customer",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "comment": ""
+  },
+  "attributes": {
+    "customer_id": {
+      "default": "",
+      "unique": true,
+      "type": "integer",
+      "required": true
+    },
+    "shipping_region": {
+      "default": 1,
+      "type": "integer",
+      "required": true
+    },
+    "name": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "default": "",
+      "type": "string",
+      "required": true
+    },
+    "password": {
+      "default": "",
+      "type": "password",
+      "required": true
+    },
+    "credit_card": {
+      "default": "",
+      "type": "text"
+    },
+    "address_1": {
+      "default": "",
+      "type": "string"
+    },
+    "address_2": {
+      "default": "",
+      "type": "string"
+    },
+    "city": {
+      "default": "",
+      "type": "string"
+    },
+    "region": {
+      "default": "",
+      "type": "string"
+    },
+    "postal_code": {
+      "default": "",
+      "type": "string"
+    },
+    "country": {
+      "default": "",
+      "type": "string"
+    },
+    "day_phone": {
+      "default": "",
+      "type": "string"
+    },
+    "eve_phone": {
+      "default": "",
+      "type": "string"
+    },
+    "mob_phone": {
+      "default": "",
+      "type": "string"
+    }
+  }
+}

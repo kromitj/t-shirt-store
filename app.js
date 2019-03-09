@@ -14,9 +14,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-const passport = require('passport');
+
+ app.use(require('forest-express-sequelize').init({
+    modelsDir: __dirname + '/models',
+    envSecret: process.env.FOREST_ENV_SECRET,
+    authSecret: process.env.FOREST_AUTH_SECRET,
+    sequelize: require('./models').sequelize,
+  }));
 
 // Passport middleware
+const passport = require('passport');
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
