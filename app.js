@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 var indexRouter = require('./routes/index');
 const productRouter = require('./routes/product');
 const customerRouter = require('./routes/customer')
+const clientRouter = require('./routes/client')
 var app = express();
 
 app.use(logger('dev'));
@@ -27,8 +28,12 @@ const passport = require('passport');
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
-app.use('', indexRouter);
-app.use('/product', productRouter);
-app.use('/user', customerRouter);
+app.use(express.static(path.join(__dirname, 'client/build')));
+
+app.use('/api/product', productRouter);
+app.use('/api/user', customerRouter);
+
+app.use('/client', clientRouter);
+
 
 module.exports = app;

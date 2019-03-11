@@ -3,17 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "client-install": "npm install --prefix client",
+    "client-build": "npm run build --prefix client",
     "start": "nodemon ./bin/www",
+    "dev": "npm run build --prefix client && npm start",
     "test": "find ./test -name '*.js' | xargs mocha --exit -R list"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
-    "chai-http": "^4.2.1",
+    "concurrency": "^0.1.4",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "dotenv": "^6.2.0",
     "express": "~4.16.0",
-    "faker": "^4.1.0",
     "forest-express-sequelize": "^2.17.2",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.0",
@@ -29,6 +31,8 @@
     "validator": "^10.11.0"
   },
   "devDependencies": {
+    "faker": "^4.1.0",
+    "chai-http": "^4.2.1",
     "chai": "^4.2.0",
     "proxyquire": "^2.1.0",
     "sequelize-mock": "^0.10.2",

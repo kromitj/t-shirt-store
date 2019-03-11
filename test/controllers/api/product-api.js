@@ -13,7 +13,7 @@ console.log(errorMsgs)
 describe('Product Route API', function () {
   it('respond with json containing a list of all products', function (done) {
     request(app)
-    .get('/product')
+    .get('/api/product')
     .set('Accept', 'application/json')
     .then(response => {
     	expect(response.statusCode).to.equal(200)
@@ -24,7 +24,7 @@ describe('Product Route API', function () {
  	});
  	it('respond with all products on department', function (done) {
     request(app)
-    .get('/product?department=1')
+    .get('/api/product?department=1')
     .set('Accept', 'application/json')
     .then(response => {
     	expect(response.statusCode).to.equal(200)
@@ -36,7 +36,7 @@ describe('Product Route API', function () {
  	});
  	it('respond with proper error given invalid department_id', function (done) {
     request(app)
-    .get('/product?department=10')
+    .get('/api/product?department=10')
     .set('Accept', 'application/json')
     .then(response => {
     	expect(response.statusCode).to.equal(400)
@@ -47,7 +47,7 @@ describe('Product Route API', function () {
  	});
  	it('respond with all products on category', function (done) {
     request(app)
-    .get('/product?department=1&category=1')
+    .get('/api/product?department=1&category=1')
     .set('Accept', 'application/json')
     .then(response => {
     	const productParams = Object.keys(response.body[0])
@@ -59,7 +59,7 @@ describe('Product Route API', function () {
  	});
  	it('respond with proper error given invalid category_id', function (done) {
     request(app)
-    .get('/product?department=1&category=100')
+    .get('/api/product?department=1&category=100')
     .set('Accept', 'application/json')
     .then(response => {
     	expect(response.statusCode).to.equal(400)
@@ -70,7 +70,7 @@ describe('Product Route API', function () {
  	});
  	it('respond with products that match the search query', function (done) {
     request(app)
-    .get('/product?department=1&category=1&search=chicken')
+    .get('/api/product?department=1&category=1&search=chicken')
     .set('Accept', 'application/json')
     .then(response => {
     	const product = response.body[0]

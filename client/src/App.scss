@@ -1,0 +1,32 @@
+ @media (max-width: 740px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+    @media (min-width: 800px) and (max-width: 850px) {
+
+      html,
+      body,
+      header,
+      .carousel {
+        height: 100vh;
+      }
+    }
+
+
+.topnav {
+    padding-left: 15%;
+    padding-right: 15%;
+}
+.main-content {
+  padding-top: 60px;
+}
+
+.product-pagination {
+  padding-top: 20px;
+}

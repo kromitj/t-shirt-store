@@ -24,8 +24,8 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   AttributeValue.associate = (models) => {
-    AttributeValue.belongsTo(models.attribute, {foreignKey: 'attribute_id'})
-    AttributeValue.hasMany(models.product_attribute, {foreignKey: 'attribute_value_id'})
+    AttributeValue.belongsTo(models.attribute, {foreignKey: 'attribute_id',  onDelete: 'cascade' })
+    AttributeValue.hasMany(models.product_attribute, {foreignKey: 'attribute_value_id',   onDelete: 'cascade' , hooks: true})
   };
 
   return AttributeValue;
