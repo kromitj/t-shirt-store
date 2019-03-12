@@ -9,17 +9,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     'value': {
       type: DataTypes.STRING,
-    },
-    'created_at': {
-      type: DataTypes.DATE,
-    },
-    'updated_at': {
-      type: DataTypes.DATE,
-    },
+    }
   }, {
     tableName: 'attribute_value',
     underscored: true,
-    
+    timestamps: false 
     
   });
 

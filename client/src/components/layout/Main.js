@@ -12,8 +12,8 @@ const Main = (props) => {
           <ProductNav title="Department"></ProductNav>
 
           <section className="text-center mb-4">
-          <ProductPagination></ProductPagination>
-          <Products></Products>
+            <ProductPagination></ProductPagination>
+            <Products></Products>
           </section>
 
         </div>

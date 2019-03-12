@@ -22,6 +22,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
 // // @desc    Register user
 // // @access  Public
 router.post('/register', (req, res) => {
+  console.log(req.body)
   const { errors, isValid } = validateRegisterInput(req.body);
   console.log(errors, isValid)
   // Check Validation
@@ -43,7 +44,8 @@ router.post('/register', (req, res) => {
       Customer.create({
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        shipping_region_id: 1,
       }).then((customer) => {
         bcrypt.genSalt(10, (err, salt) => {
           bcrypt.hash(customer.password, salt, (err, hash) => {

@@ -7,7 +7,7 @@
     "client-build": "npm run build --prefix client",
     "start": "nodemon ./bin/www",
     "dev": "npm run build --prefix client && npm start",
-    "test": "find ./test -name '*.js' | xargs mocha --exit -R list"
+    "test": "find ./test -name '*.js' | xargs mocha --exit "
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

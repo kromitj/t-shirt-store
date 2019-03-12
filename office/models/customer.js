@@ -45,19 +45,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     'mob_phone': {
       type: DataTypes.STRING,
-    },
-    'created_at': {
-      type: DataTypes.DATE,
-    },
-    'shipping_region': {
-      type: DataTypes.INTEGER,
-    },
-    'updated_at': {
-      type: DataTypes.DATE,
-    },
+    }
   }, {
     tableName: 'customer',
     underscored: true,
+    timestamps: false,
     
     
   });

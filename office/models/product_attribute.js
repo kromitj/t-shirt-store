@@ -8,17 +8,10 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       primaryKey: true 
     },
-    'updated_at': {
-      type: DataTypes.DATE,
-    },
-    'created_at': {
-      type: DataTypes.DATE,
-    },
   }, {
     tableName: 'product_attribute',
     underscored: true,
-    
-    
+    timestamps: false    
   });
 
   Model.associate = (models) => {

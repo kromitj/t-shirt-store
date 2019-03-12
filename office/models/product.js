@@ -28,16 +28,10 @@ module.exports = (sequelize, DataTypes) => {
     'display': {
       type: DataTypes.INTEGER,
     },
-    'created_at': {
-      type: DataTypes.DATE,
-    },
-    'updated_at': {
-      type: DataTypes.DATE,
-    },
   }, {
     tableName: 'product',
     underscored: true,
-    
+    timestamps: false    
     
   });
 

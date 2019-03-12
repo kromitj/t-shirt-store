@@ -5,7 +5,7 @@ var router  = express.Router();
 
 router.get('/', function(req, res) {
 	const __parentDir = path.dirname(module.parent.filename);
-	res.sendFile(path.normalize(__parentDir +'/client2/build/index.html'));
+	res.sendFile(path.normalize(__parentDir +'/client/build/index.html'));
 });
 
 module.exports = router;

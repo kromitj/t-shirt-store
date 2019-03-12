@@ -18,10 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     'buy_now': {
       type: DataTypes.INTEGER,
-    },
-    'added_on': {
-      type: DataTypes.DATE,
-    },
+    }
   }, {
     tableName: 'shopping_cart',
     underscored: true,

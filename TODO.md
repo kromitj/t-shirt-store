@@ -1,3 +1,14 @@
+Mar 11
+
+Actions:
+LOGIN
+SIGNUP
+SESSIONNEW
+USERNEW
+PRODUCTS_SHOW
+PRODUCT_SHOW
+
+
 Mar 4th
 1. 
 
@@ -38,5 +49,6 @@ Ideas on Quering Products
 			res.status(500).send('Internal Server Error');
 		});
 	});
+
 
 

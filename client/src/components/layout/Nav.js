@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBDropdown,
 MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem, MDBIcon } from "mdbreact";
 
@@ -14,8 +15,8 @@ toggleCollapse = () => {
 render() {
   return (
     <MDBNavbar className="topnav" color="white" double expand="xs" fixed="top" scrolling>
-      <MDBNavbarBrand href="./components/custom">
-        <strong className="black-text">T-Shirt-Strore</strong>
+      <MDBNavbarBrand >
+        <Link to="/" ><strong className="black-text">Shirt-Store</strong></Link>
       </MDBNavbarBrand>
         
         <MDBNavbarNav right>
@@ -31,8 +32,8 @@ render() {
                 <MDBIcon icon="user" />
               </MDBDropdownToggle>
               <MDBDropdownMenu className="dropdown-default" right>
-                <MDBDropdownItem href="#!">Login</MDBDropdownItem>
-                <MDBDropdownItem href="#!">Sign Up</MDBDropdownItem>
+                <MDBDropdownItem ><Link to="/login" >Login</Link></MDBDropdownItem>
+                <MDBDropdownItem > <Link to="/register">Sign Up</Link></MDBDropdownItem>
               </MDBDropdownMenu>
             </MDBDropdown>
           </MDBNavItem>

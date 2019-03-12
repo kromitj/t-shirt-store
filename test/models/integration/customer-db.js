@@ -30,7 +30,7 @@ describe('Customer to DB', () => {
 	})
 	it("can find the first record", (done) => {
 		Customer.findByPk(1).then(customer => {
-		  expect(customer.get('name')).to.equal('Mitch Kroska')		
+		  expect(customer.get('name')).to.equal('blah')		
 		  done()	  
 		}).catch((err) => {
 			done(err)

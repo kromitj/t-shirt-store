@@ -58,7 +58,7 @@ module.exports = {
 	},
 	shoppingCart: {
 		seed: {
-			"description": "smorgis morgis horgis grrrrrrrrrr",
+			"description": "brrr its cold outside",
 			"quantity": 1,
 			"buy_now": false,
 			"quantity": 1,

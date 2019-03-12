@@ -14,7 +14,6 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
  app.use(require('forest-express-sequelize').init({
     modelsDir: __dirname + '/models',
@@ -28,12 +27,17 @@ const passport = require('passport');
 app.use(passport.initialize());
 require('./config/passport')(passport);
 
-app.use(express.static(path.join(__dirname, 'client/build')));
 
 app.use('/api/product', productRouter);
 app.use('/api/user', customerRouter);
 
-app.use('/client', clientRouter);
+// serve static assets
+app.use(express.static('client/build'));
+
+app.get('*', (req, res) => {
+	res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+})
+
 
 
 module.exports = app;
