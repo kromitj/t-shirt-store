@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux'
-
+import { withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import Proptypes from 'prop-types'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
-import {registerUser} from '../../actions/authActions'
+
+import { registerUser } from '../../actions/authActions'
+
 export class Register extends Component {
-   constructor() {
+  constructor() {
     super();
     this.state = {
       name: 'blah',
@@ -16,28 +19,38 @@ export class Register extends Component {
     this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
-
-   onChange(e) {
-    console.log(e.target.name, e.target.value)
-    this.setState({ [e.target.name]: e.target.value });
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
   }
 
-   onSubmit(e) {
-    console.log("yoooooooooooooooooooooooooo")
-    e.preventDefault();
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors })
+    }
+  }
 
+  onChange(e) {
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  onSubmit(e) {
+    e.preventDefault();
     const newUser = {
       name: this.state.name,
       email: this.state.email,
       password: this.state.password,
       password2: this.state.password2,
-      shipping_region: "dbfsdaljfndslkfndsla"
     };
     this.props.registerUser(newUser, this.props.history);
   }
   render() {
-     return (
-    <MDBContainer>
+    const { user } = this.props.auth
+    return (
+      <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>
@@ -51,46 +64,55 @@ export class Register extends Component {
                     group
                     type="text"
                     validate
-                    error="wrong"
+                    required
+                    error={this.props.errors.name}
                     success="right"
                     name="name"
                     value={this.state.name}
                     onChange={this.onChange}
                   />
+                  <div className="amber-text">{this.props.errors.name}</div>
                   <MDBInput
                     label="Your email"
                     icon="envelope"
                     group
                     type="email"
                     validate
-                    error="wrong"
+                    required
+                    error={this.props.errors.email}
                     success="right"
                     name="email"
                     value={this.state.email}
                     onChange={this.onChange}
                   />
+                  <div className="amber-text">{this.props.errors.email}</div>
                   <MDBInput
                     label="Your password"
                     icon="lock"
                     group
                     type="password"
                     validate
+                    required
+                    error={this.props.errors.password}
                     name="password"
                     value={this.state.password}
                     onChange={this.onChange}
                   />
+                  <div className="amber-text">{this.props.errors.password}</div>
                   <MDBInput
                     label="Confirm your password"
                     icon="exclamation-triangle"
                     group
                     type="text"
                     validate
-                    error="wrong"
+                    required
+                    error={this.props.errors.password2}
                     success="right"
                     name="password2"
                     value={this.state.password2}
                     onChange={this.onChange}
                   />
+                  <div className="amber-text">{this.props.errors.password2}</div>
                 </div>
                 <div className="text-center py-4 mt-3">
                   <MDBBtn color="cyan" type="submit">
@@ -103,8 +125,19 @@ export class Register extends Component {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
-  );
+    );
   }
 }
 
-export default connect(null, {registerUser})(Register);
+Register.propTypes = {
+  registerUser: Proptypes.func.isRequired,
+  auth: Proptypes.object.isRequired,
+  errors: Proptypes.object.isRequired
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
+})
+
+export default connect(mapStateToProps, { registerUser })(withRouter(Register));

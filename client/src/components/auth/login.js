@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import {connect} from 'react-redux'
-
+import { connect } from 'react-redux'
+import PropTypes from 'prop-types'
+import { loginUser } from '../../actions/authActions'
+import classnames from 'classnames'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
-import {loginUser} from '../../actions/authActions'
+
 export class Login extends Component {
-   constructor() {
+  constructor() {
     super();
     this.state = {
       name: '',
@@ -16,12 +18,30 @@ export class Login extends Component {
     this.onSubmit = this.onSubmit.bind(this);
   }
 
-   onChange(e) {
-    console.log(e.target.name, e.target.value)
-    this.setState({ [e.target.name]: e.target.value });
+  componentDidMount() {
+    if (this.props.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
   }
 
-   onSubmit(e) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
+    if (nextProps.auth.isAuthenticated) {
+      this.props.history.push('/')
+    }
+    if (nextProps.errors) {
+      this.setState({ errors: nextProps.errors })
+    }
+  }
+
+  onChange(e) {
+    console.log(e.target.name, e.target.value)
+    this.setState({
+      [e.target.name]: e.target.value
+    });
+  }
+
+  onSubmit(e) {
+    console.log('yoooooooooooo')
     e.preventDefault();
 
     const newUser = {
@@ -32,27 +52,29 @@ export class Login extends Component {
     this.props.loginUser(newUser, this.props.history);
   }
   render() {
-     return (
-    <MDBContainer>
+    const { errors } = this.state.errors
+    return (
+      <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
           <MDBCard>
             <MDBCardBody>
-              <form>
+              <form form onSubmit={ this.onSubmit}>
                 <p className="h4 text-center py-4">Login</p>
                 <div className="grey-text">
                   <MDBInput
+                    type="email"
+                    name="email"
                     label="Your email"
+                    value={this.state.email}
                     icon="envelope"
                     group
-                    type="email"
                     validate
                     error="wrong"
                     success="right"
-                    name="email"
-                    value={this.state.email}
                     onChange={this.onChange}
                   />
+                  <div className="amber-text">{this.props.errors.email}</div>
                   <MDBInput
                     label="Your password"
                     icon="lock"
@@ -63,6 +85,7 @@ export class Login extends Component {
                     value={this.state.password}
                     onChange={this.onChange}
                   />
+                  <div className="amber-text">{this.props.errors.password}</div>
                 </div>
                 <div className="text-center py-4 mt-3">
                   <MDBBtn color="cyan" type="submit">
@@ -75,8 +98,19 @@ export class Login extends Component {
         </MDBCol>
       </MDBRow>
     </MDBContainer>
-  );
+    );
   }
 }
 
-export default connect(null, {loginUser})(Login);
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  errors: PropTypes.func.isRequired,
+}
+
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+  errors: state.errors
+})
+
+export default connect(mapStateToProps, { loginUser })(Login);

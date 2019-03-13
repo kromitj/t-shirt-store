@@ -3,14 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "start": "nodemon ./bin/www",
+    "dev": "concurrently \"npm run start\" \"npm run client-build\"",
     "client-install": "npm install --prefix client",
     "client-build": "npm run build --prefix client",
-    "start": "nodemon ./bin/www",
-    "dev": "npm run build --prefix client && npm start",
     "test": "find ./test -name '*.js' | xargs mocha --exit "
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "classnames": "^2.2.6",
     "concurrency": "^0.1.4",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",

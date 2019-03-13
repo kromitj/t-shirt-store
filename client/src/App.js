@@ -1,8 +1,11 @@
 import React, { Component, useReducer } from 'react';
-import { BrowserRouter as Router, Route} from 'react-router-dom'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import jwt_decode from 'jwt-decode'
+
+import setAuthToken from './utils/setAuthToken'
+import { setCurrentUser, logoutUser } from './actions/authActions'
 import store from './store'
-import './App.scss';
 
 import Footer from './components/layout/Footer'
 import NavbarPage from './components/layout/Nav'
@@ -11,8 +14,21 @@ import Main from './components/layout/Main'
 import Login from './components/auth/login'
 import Register from './components/auth/register'
 
+import './App.scss';
 
+// check for auth token
+if (localStorage.jwtToken) {
+	setAuthToken(localStorage.jwtToken)
+	// 
+	const decoded = jwt_decode(localStorage.jwtToken)
+	store.dispatch(setCurrentUser(decoded))
 
+	// check if jwt token is expired and log user out if it is
+	const currentTime = new Date() / 1000
+	if (decoded.exp < currentTime) {
+		store.dispatch(logoutUser())
+	}
+}
 class App extends Component {
 
 	constructor(props) {
@@ -21,7 +37,7 @@ class App extends Component {
 
 	render() {
 		return (
-  	<Provider store={store} >
+			<Provider store={store} >
     	<Router>
 	    	<div className="app">
 	    		<NavbarPage></NavbarPage >
@@ -34,7 +50,7 @@ class App extends Component {
 	    	</div>
     	</Router>
     </Provider>
-    );
+		);
 	}
 }
 

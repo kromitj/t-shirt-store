@@ -28,9 +28,9 @@ router.post('/register', (req, res) => {
   // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
-  } 
+  }
 
-  Customer.findOne({where: {email: req.body.email }}).then(user => {
+  Customer.findOne({ where: { email: req.body.email } }).then(user => {
     if (user) {
       errors.email = 'Email already exists';
       return res.status(400).json(errors);
@@ -56,7 +56,7 @@ router.post('/register', (req, res) => {
               .then(user => res.json(user))
               .catch(err => console.log(err));
           });
-        });       
+        });
       })
     }
   });
@@ -67,7 +67,7 @@ router.post('/register', (req, res) => {
 // @access  Public
 router.post('/login', (req, res) => {
   const { errors, isValid } = validateLoginInput(req.body);
-
+  console.log(errors, isValid)
   // Check Validation
   if (!isValid) {
     return res.status(400).json(errors);
@@ -77,24 +77,24 @@ router.post('/login', (req, res) => {
   const password = req.body.password;
 
   // Find customer by email
-  Customer.findOne({where: {email: email} }).then(customer => {
+  Customer.findOne({ where: { email: email } }).then(customer => {
     // Check for customer
     if (!customer) {
+      console.log("customer not found")
       errors.email = 'Customer not found';
       return res.status(404).json(errors);
     }
 
     // Check Password
     bcrypt.compare(password, customer.password).then(isMatch => {
+      console.log("ismatch")
       if (isMatch) {
         // Customer Matched
         const payload = { id: customer.customer_id, name: customer.name, email: customer.email }; // Create JWT Payload
-
         // Sign Token
         jwt.sign(
           payload,
-          'secret',
-          { expiresIn: 3600 },
+          'secret', { expiresIn: 3600 },
           (err, token) => {
             res.json({
               success: true,
