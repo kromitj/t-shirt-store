@@ -10,6 +10,7 @@ import store from './store'
 import Footer from './components/layout/Footer'
 import NavbarPage from './components/layout/Nav'
 import Item from './components/navbar/navItem'
+import Landing from './components/layout/Landing'
 import Main from './components/layout/Main'
 import Login from './components/auth/login'
 import Register from './components/auth/register'
@@ -40,9 +41,10 @@ class App extends Component {
 			<Provider store={store} >
     	<Router>
 	    	<div className="app">
-	    		<NavbarPage></NavbarPage >
+    			<Route exact path='/' component={ Landing} />
 	    		<div className="container">
-	    			<Route exact path='/' component={ Main} />
+    			<NavbarPage></NavbarPage>
+	    		<Route exact path='/product' component={ Main } />
 	    			<Route exact path='/login' component={ Login} />
 	    			<Route exact path='/register' component={ Register} />
 	  			</div>

@@ -1,12 +1,18 @@
 import React, { Component } from 'react';
 import ProductCard from '../product/product-card'
-import Products from '../product/product-row'
+import Products from '../product/products'
 import ProductNav from '../product/product-nav'
 import ProductPagination from '../product/product-pagination'
 
-const Main = (props) => {
-  return (
-    <main className="main-content">
+export class Main extends Component {
+  constructor() {
+    super()
+    this.state = {}
+  }
+
+  render() {
+    return (
+      <main className="main-content">
         <div className="container">
 
           <ProductNav title="Department"></ProductNav>
@@ -19,6 +25,8 @@ const Main = (props) => {
         </div>
       </main>
     );
+  }
 }
+
 
 export default Main;

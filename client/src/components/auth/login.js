@@ -41,7 +41,6 @@ export class Login extends Component {
   }
 
   onSubmit(e) {
-    console.log('yoooooooooooo')
     e.preventDefault();
 
     const newUser = {
