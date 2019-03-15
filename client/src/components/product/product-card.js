@@ -19,7 +19,7 @@ class ProductCard extends Component  {
           <div className="product-item-img">
           <MDBCardImage 
             cascade         
-            src={require(`../../../public/product-imgs/${product.thumbnail}`)}
+            src={`https://res.cloudinary.com/kromitj/image/upload/v1552638701/${product.thumbnail}`}
             top
             alt="sample photo"
             overlay="blue"
