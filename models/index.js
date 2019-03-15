@@ -15,7 +15,12 @@ let sequelize;
 if (config.use_env_variable) {
   sequelize = new Sequelize(process.env[config.use_env_variable], config);
 } else {
-  sequelize = new Sequelize(DB_DB, DB_USER, DB_PASS, {host: DB_HOST, dialect: 'mysql'})
+  sequelize = new Sequelize(DB_DB, DB_USER, DB_PASS, {host: DB_HOST, dialect: 'mysql',pool: {
+max: 5,
+min: 0,
+idle: 20000,
+acquire: 20000
+}})
   sequelize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
@@ -45,4 +50,3 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
-dialectOptions: {  ssl: true}
