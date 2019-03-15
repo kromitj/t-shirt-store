@@ -1,0 +1,14 @@
+{
+  "development": {
+    "host": "SG-tshirtshop-247-master.servers.mongodirector.com",
+    "dialect": "mysql"
+  },
+  "test": {
+    "host": "SG-tshirtshop-247-master.servers.mongodirector.com",
+    "dialect": "mysql"
+  },
+  "production": {
+    "host": "SG-tshirtshop-247-master.servers.mongodirector.com",
+    "dialect": "mysql"
+  }
+}
