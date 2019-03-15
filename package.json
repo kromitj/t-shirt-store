@@ -8,7 +8,8 @@
     "client-install": "npm install --prefix client",
     "client-build": "npm run build --prefix client",
     "test": "find ./test -name '*.js' | xargs mocha --exit ",
-    "heroku-post-build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild":
+      "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
