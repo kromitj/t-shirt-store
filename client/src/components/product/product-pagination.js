@@ -3,7 +3,7 @@ import { MDBPagination, MDBPageItem, MDBPageNav, MDBCol, MDBRow } from "mdbreact
 
 const PaginationPage = () => {
   return (
-        <MDBPagination circle className="product-pagination justify-content-center">
+        <MDBPagination color="#FF6F61" circle className="product-pagination justify-content-center">
           <MDBPageItem disabled>
             <MDBPageNav className="page-link">
               <span>First</span>
@@ -15,8 +15,8 @@ const PaginationPage = () => {
               <span className="sr-only">Previous</span>
             </MDBPageNav>
           </MDBPageItem>
-          <MDBPageItem active>
-            <MDBPageNav className="page-link">
+          <MDBPageItem active >
+            <MDBPageNav className="page-link active-page">
               1 <span className="sr-only">(current)</span>
             </MDBPageNav>
           </MDBPageItem>

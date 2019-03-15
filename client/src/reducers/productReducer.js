@@ -1,22 +1,34 @@
-import { SET_PRODUCTS } from '../actions/types';
+import { GET_PRODUCTS, GET_PRODUCT, PRODUCT_LOADING } from '../actions/types';
 
 const initialState = {
 	products: [],
 	product: null,
+	loading: false,
 	offset: 0,
 	limit: 50,
-	department: null
-
+	department: null,
 };
 
 export default function(state = initialState, action) {
 	switch (action.type) {
-		case SET_PRODUCTS:
-			const products = action.payload
-			return {
-				...state,
-				products: products
-			};
+		case PRODUCT_LOADING:
+      return {
+        ...state,
+        loading: true
+      };
+      case GET_PRODUCT:
+	      return {
+	        ...state,
+	        product: action.payload,
+	        loading: false
+	     };
+      case GET_PRODUCTS: 
+      console.log(action)     
+      return {
+        ...state,
+        products: action.payload,
+        loading: false
+      };
 		default:
 			return state;
 	}

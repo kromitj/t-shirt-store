@@ -12,6 +12,7 @@ import NavbarPage from './components/layout/Nav'
 import Item from './components/navbar/navItem'
 import Landing from './components/layout/Landing'
 import Main from './components/layout/Main'
+import ProductPage from './components/product/product-page'
 import Login from './components/auth/login'
 import Register from './components/auth/register'
 
@@ -37,14 +38,17 @@ class App extends Component {
 	}
 
 	render() {
+		var currentLocation = window.location.pathname;
+		console.log("currentLocation: ", currentLocation)
 		return (
 			<Provider store={store} >
     	<Router>
 	    	<div className="app">
-    			<Route exact path='/' component={ Landing} />
+	    		<NavbarPage />
+	  			<Route exact path='/' component={ Landing} />
 	    		<div className="container">
-    			<NavbarPage></NavbarPage>
-	    		<Route exact path='/product' component={ Main } />
+	    			<Route exact path='/product' component={ Main } />
+	    			<Route exact path="/product/:id" component={ProductPage} />
 	    			<Route exact path='/login' component={ Login} />
 	    			<Route exact path='/register' component={ Register} />
 	  			</div>

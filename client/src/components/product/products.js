@@ -6,6 +6,7 @@ import ProductCard from './product-card'
 
 export class Products extends Component {
   render() {
+    console.log("Products: ", this.props)
     const products = this.props.products.products
     console.log(this.props)
     const productItems = products.map(product => (

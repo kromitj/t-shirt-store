@@ -2,8 +2,6 @@ import React from 'react';
 
 const Price = (props) => {
 		const product = props.product
-		console.log("product: ", product)
-		console.log("props: ", props)
 		let price = (<h4 className="font-weight-bold red-text">
       <strong>{product.price}$</strong>
     </h4>)

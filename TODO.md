@@ -1,3 +1,15 @@
+Color Scheme:
+
+Strong orange and cyan
+when a nav item is inactive the color is strong orange
+when active it is cyan
+	> the carot on the right of the user and the cart num are black
+	> if no items in cart num goes away, when item is added cart colors inverse
+	> so first item added causes the cart to turn strong orange, while the newly added
+	> number fades from cyan then to black
+
+
+
 Mar 11
 
 Actions:

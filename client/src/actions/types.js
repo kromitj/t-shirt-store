@@ -1,10 +1,15 @@
-export const GET_ERRORS = 'GET_ERRORS';
 export const SET_CURRENT_USER = 'SET_CURRENT_USER';
-export const CLEAR_ERRORS = 'CLEAR_ERRORS';
+
+export const SET_DEPARTMENT = 'SET_DEPARTMENT';
+
 export const GET_PRODUCT = 'GET_PRODUCT';
 export const PRODUCT_LOADING = 'PRODUCT_LOADING';
+export const SET_PRODUCT = 'SET_PRODUCT';
 export const PRODUCT_NOT_FOUND = 'PRODUCT_NOT_FOUND';
 
 export const GET_PRODUCTS = 'GET_PRODUCTS';
-export const SET_PRODUCTS = 'SET_PRODUCTS';
 export const PRODUCTS_LOADING = 'PRODUCTS_LOADING';
+export const SET_PRODUCTS = 'SET_PRODUCTS';
+
+export const GET_ERRORS = 'GET_ERRORS';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';

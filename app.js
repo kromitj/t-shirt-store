@@ -31,7 +31,7 @@ require('./config/passport')(passport);
 app.use('/api/product', productRouter);
 app.use('/api/user', customerRouter);
 
-// serve static assets
+// serve static assets 
 app.use(express.static('client/build'));
 
 app.get('*', (req, res) => {

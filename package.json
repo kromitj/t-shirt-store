@@ -7,7 +7,8 @@
     "dev": "concurrently \"npm run start\" \"npm run client-build\"",
     "client-install": "npm install --prefix client",
     "client-build": "npm run build --prefix client",
-    "test": "find ./test -name '*.js' | xargs mocha --exit "
+    "test": "find ./test -name '*.js' | xargs mocha --exit ",
+    "heroku-post-build": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -23,6 +24,7 @@
     "morgan": "~1.9.0",
     "mysql": "^2.16.0",
     "mysql2": "^1.6.5",
+    "node-sass": "^4.11.0",
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",

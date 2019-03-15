@@ -7,7 +7,6 @@ import { getProducts } from '../../actions/productActions'
 export class Landing extends Component {
   constructor() {
     super()
-    this.onDeptClick = this.onDeptClick.bind(this);
   }
 
   componentDidMount() {
@@ -16,10 +15,6 @@ export class Landing extends Component {
     }
   }
 
-  onDeptClick(e) {
-    e.preventDefault();
-    this.props.getProducts(e.target.name, this.props.history);
-  }
   render() {
     return (
       <div>       
@@ -46,10 +41,10 @@ export class Landing extends Component {
                     </div>
                     <div className="form-row justify-content-center pick-city">
                       <div className="btn-toolbar col-xs-12 center-block" align="center" role="group" aria-label="Basic example">
-                        <button type="button" className="btn btn-outline-info city-button mx-3" name="" onClick={ this.onDeptClick}>All</button>
-                        <button type="button" className="btn btn-outline-info city-button mx-3" name="?department=1" onClick={ this.onDeptClick}>Regional</button>
-                        <button type="button" className="btn btn-outline-info city-button mx-3" name="?department=2" onClick={ this.onDeptClick}>Nature</button>
-                        <button type="button" className="btn btn-outline-info city-button mx-3" name="?department=3" onClick={ this.onDeptClick}>Seasonal</button>
+                        <Link to="/product" className="btn btn-outline-info city-button mx-3" name="">All</Link>
+                        <Link to="/product?department=1" className="btn btn-outline-info city-button mx-3" name="?department=1" >Regional</Link>
+                        <Link to="/product?department=2" className="btn btn-outline-info city-button mx-3" name="?department=2" >Nature</Link>
+                        <Link to="/product?department=3" className="btn btn-outline-info city-button mx-3" name="?department=3" >Seasonal</Link>
                       </div>                
                     </div>
                   </div>

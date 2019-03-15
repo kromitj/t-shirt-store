@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/authActions'
+import BrandLogo from '../../imgs/tshirtshop.png'
 
 import {
   MDBNavbar,
@@ -39,39 +40,39 @@ class NavbarPage extends Component {
 
 
     const authLinks = (
-      <MDBDropdown>
+      <MDBDropdown >
         <MDBDropdownToggle nav caret>
-          <MDBIcon icon="user" />
+          <MDBIcon size="2x" icon="user" className="nav-item-auth"/>
         </MDBDropdownToggle>
         <MDBDropdownMenu className="dropdown-default" right>
-          <MDBDropdownItem ><Link to="/login" >Profile</Link></MDBDropdownItem>
-          <MDBDropdownItem > <a href="" onClick={this.onLogOutClick.bind(this)}>Logout</a></MDBDropdownItem>
+          <MDBDropdownItem ><Link to="/login" className="brand-cyan">Profile</Link></MDBDropdownItem>
+          <MDBDropdownItem> <a href="" onClick={this.onLogOutClick.bind(this) } className="brand-cyan">Logout</a></MDBDropdownItem>
         </MDBDropdownMenu>
       </MDBDropdown>
     )
     const guestLinks = (
       <MDBDropdown>
         <MDBDropdownToggle nav caret>
-          <MDBIcon icon="user" />
+          <MDBIcon size="2x" className="nav-item-guest" icon="user" />
         </MDBDropdownToggle>
         <MDBDropdownMenu className="dropdown-default" right>
-          <MDBDropdownItem ><Link to="/login" >Login</Link></MDBDropdownItem>
-          <MDBDropdownItem > <Link to="/register">Sign Up</Link></MDBDropdownItem>
+          <MDBDropdownItem><Link to="/login" >Login</Link></MDBDropdownItem>
+          <MDBDropdownItem> <Link to="/register">Sign Up</Link></MDBDropdownItem>
         </MDBDropdownMenu>
       </MDBDropdown>
     )
 
     return (
-      <MDBNavbar className="topnav" color="white" double expand="xs" fixed="top" scrolling>
-      <MDBNavbarBrand >
-        <Link to="/" ><strong className="black-text">Shirt-Store</strong></Link>
+      <MDBNavbar className="topnav" double expand="xs" fixed="top">
+      <MDBNavbarBrand ><MDBIcon icon="tshirt" className="logo-icon-status-idle"/> 
+        <Link to="/" ><strong className="logo-icon-text">| T-Shirt-Store</strong></Link>
       </MDBNavbarBrand>
         
         <MDBNavbarNav right>
           <MDBNavItem>
             <MDBNavLink className="waves-effect" to="#!">
-            <span className="counter">22</span>
-              <MDBIcon icon="shopping-cart" />
+              <span class="badge badge-primary">2</span>
+              <MDBIcon size="2x" className="nav-item-guest" icon="shopping-cart"/>
             </MDBNavLink>
           </MDBNavItem>
           <MDBNavItem>
