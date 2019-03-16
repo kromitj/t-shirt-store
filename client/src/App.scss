@@ -44,6 +44,10 @@ $primary-color-text:   #FFFFFF;
 
   }
  }
+ .items-in-cart {
+  color: $living-coral !important;
+ }
+
  .page-link {
   color: $beluga !important;
  }
@@ -106,7 +110,7 @@ $primary-color-text:   #FFFFFF;
 
  .topnav {
   padding-left: 13%;
-  padding-right: 15%;
+  padding-right: 10%;
   background-color: $forest-biome;
  }
 

@@ -1,10 +1,13 @@
 import React, { Component, useReducer } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+
 import jwt_decode from 'jwt-decode'
 
 import setAuthToken from './utils/setAuthToken'
-import { setCurrentUser, logoutUser } from './actions/authActions'
+import { setCurrentUser, logoutUser, getUserIp } from './actions/authActions'
 import store from './store'
 
 import Footer from './components/layout/Footer'
@@ -15,13 +18,13 @@ import Main from './components/layout/Main'
 import ProductPage from './components/product/product-page'
 import Login from './components/auth/login'
 import Register from './components/auth/register'
+import Cart from './components/cart/cart'
 
 import './App.scss';
 
 // check for auth token
 if (localStorage.jwtToken) {
 	setAuthToken(localStorage.jwtToken)
-	// 
 	const decoded = jwt_decode(localStorage.jwtToken)
 	store.dispatch(setCurrentUser(decoded))
 
@@ -31,11 +34,19 @@ if (localStorage.jwtToken) {
 		store.dispatch(logoutUser())
 	}
 }
+
+// check for cart 
+		
 class App extends Component {
 
 	constructor(props) {
 		super(props);
 	}
+
+	componentDidMount() {
+		// load userCart from localStorage with users ipAddress as key
+	  store.dispatch(getUserIp())
+  }
 
 	render() {
 		var currentLocation = window.location.pathname;
@@ -49,6 +60,7 @@ class App extends Component {
 	    		<div className="container">
 	    			<Route exact path='/product' component={ Main } />
 	    			<Route exact path="/product/:id" component={ProductPage} />
+	    			<Route exact path='/cart' component={ Cart} />
 	    			<Route exact path='/login' component={ Login} />
 	    			<Route exact path='/register' component={ Register} />
 	  			</div>

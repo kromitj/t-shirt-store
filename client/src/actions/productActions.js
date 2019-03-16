@@ -10,6 +10,7 @@ export const getProducts = (query, history) => dispatch => {
 		axios
 			.get('/api/product' + query)
 			.then(res => {
+				console.log("RESPONSE: ", res)
 				dispatch({
 					type: GET_PRODUCTS,
 					payload: res.data

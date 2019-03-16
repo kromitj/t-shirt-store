@@ -8,8 +8,7 @@
     "client-install": "npm install --prefix client",
     "client-build": "npm run build --prefix client",
     "test": "find ./test -name '*.js' | xargs mocha --exit ",
-    "heroku-postbuild":
-      "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
@@ -29,6 +28,7 @@
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "request-ip": "^2.1.3",
     "sequelize": ">=3.20.0",
     "sequelize-cli": "^5.4.0",
     "sinon": "^7.2.6",

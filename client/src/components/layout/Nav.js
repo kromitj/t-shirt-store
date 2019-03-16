@@ -37,7 +37,7 @@ class NavbarPage extends Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth
-
+    const itemsInCart = this.props.auth.cart.length
 
     const authLinks = (
       <MDBDropdown >
@@ -70,8 +70,8 @@ class NavbarPage extends Component {
         
         <MDBNavbarNav right>
           <MDBNavItem>
-            <MDBNavLink className="waves-effect" to="#!">
-              <span class="badge badge-primary">2</span>
+            <MDBNavLink className="waves-effect" to="/cart">
+              <span class="badge badge-primary">{itemsInCart}</span>
               <MDBIcon size="2x" className="nav-item-guest" icon="shopping-cart"/>
             </MDBNavLink>
           </MDBNavItem>

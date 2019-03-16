@@ -3,6 +3,7 @@ const router = express.Router();
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const requestIp = require('request-ip');
 // const keys = require('../../config/keys');
 const passport = require('passport');
 
@@ -17,6 +18,11 @@ const Customer = models.Customer
 // @desc    Tests users route
 // @access  Public
 router.get('/test', (req, res) => res.json({ msg: 'Users Works' }));
+
+router.get('/ip', (req, res) => {
+  const userIP = requestIp.getClientIp(req);
+  res.json({userIP})
+});
 
 // // @route   POST api/users/register
 // // @desc    Register user
