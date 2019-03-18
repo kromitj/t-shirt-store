@@ -17,7 +17,7 @@ Developer Set-Up Steps:
 * [Api Design:] (https://github.com/kromitj/t-shirt-store/blob/master/notes/api-design.txt )
 
 * [Wire frames can be found here:](https://github.com/kromitj/t-shirt-store/tree/master/WireFrames)
-* [Admin page](app.forestadmin.com/39151/dashboard/65877)
+* [Admin page](https://app.forestadmin.com/39151/dashboard/65877)
 * Cart information is stored on users localstorage using their ipAdress + 'tShirtStore' as the key
 * Once a user logs in a jwtToken is saved on their localStorage and is good for 1 hour
 * Checkout and Credit-Card processing is handled by Stripe
