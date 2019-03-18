@@ -6,13 +6,7 @@ Developer Set-Up Steps:
 4. npm run test
 5. npm start
 
-##Schema
-![Pic of Schema](./Schema.png "Schema")
-
-##Mobile Landing Page
-![Pic of Schema](./WireFrames/Mobile-Landing.png "Schema")
-
-##About Aplication:
+## About Aplication:
 * App is hosted at: https://tshirtstore612.herokuapp.com/
 * Uses MERN stack except mySQL instead of MongoDB.
 * Includes integration tests on the Models and the Controllers
@@ -28,4 +22,6 @@ Developer Set-Up Steps:
 * [Api Design:] (https://github.com/kromitj/t-shirt-store/blob/master/notes/api-design.txt )
 
 * [Wire frames can be found here:](https://github.com/kromitj/t-shirt-store/tree/master/WireFrames)
+
+
 
