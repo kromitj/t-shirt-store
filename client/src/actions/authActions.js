@@ -63,37 +63,37 @@ export const logoutUser = () => dispatch => {
 export const getUserIp = () => dispatch => {
   axios.get('/api/user/ip').then(res => {
     const userIP = res.data.userIP
-    const userCartID = `tshirtstore${userIP}`  
+    const userCartID = `tshirtstore${userIP}`
     if (!localStorage.getItem(userCartID)) {
-    localStorage.setItem(userCartID, JSON.stringify([]))
-  }
-  const userCart = JSON.parse(localStorage.getItem(userCartID))
-  console.log("USERCART: ", userCart)
+      localStorage.setItem(userCartID, JSON.stringify([]))
+    }
+    const userCart = JSON.parse(localStorage.getItem(userCartID))
+    console.log("USERCART: ", userCart)
     dispatch(setUserCart(userCart, userCartID));
-  })  
+  })
 };
 
-export const setUserCart = (userCart, userIP) => {  
+export const setUserCart = (userCart, userIP) => {
   return {
     type: SET_USER_CART,
-    payload: {cart: userCart, ip: userIP}
+    payload: { cart: userCart, ip: userIP }
   }
 };
-export const addUserCart = (product, userIP) => {  
+export const addUserCart = (product, userIP) => {
   console.log("product: ", product)
   // get cart from localStorage
   const cart = JSON.parse(localStorage.getItem(userIP))
   let isUnique = true
   // check if item is already in cart, if yes, add to qty
-  for (let i=0; i<cart.length; i++) {
+  for (let i = 0; i < cart.length; i++) {
     if (cart[i][0] === product[0]) {
-        isUnique = false
-        cart[i][5] += 1
-        break;
+      isUnique = false
+      cart[i][5] += 1
+      break;
     }
   }
   if (isUnique) cart.push(product)
-   localStorage.setItem(userIP, JSON.stringify(cart))
+  localStorage.setItem(userIP, JSON.stringify(cart))
   return {
     type: ADD_USER_CART,
     payload: cart

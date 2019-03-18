@@ -5,9 +5,6 @@ import PropTypes from 'prop-types'
 import { getProducts } from '../../actions/productActions'
 
 export class Landing extends Component {
-  constructor() {
-    super()
-  }
 
   componentDidMount() {
     if (this.props.auth.isAuthenticated) {
@@ -26,7 +23,7 @@ export class Landing extends Component {
                 <form className="justify-content-center">
                   <div className="form-row">
                     <div className="col-12 col-md-5 hero-logo">
-                      <h1 className="logo-landing"><a className="link" href="#"><span className="hero-logo-text">T-Shirt-Store</span></a></h1>
+                      <h1 className="logo-landing"><a className="link" ><span className="hero-logo-text">T-Shirt-Store</span></a></h1>
                     </div>
                     <div className="col-12 col-md-7 mb-2 mb-md-0 hero-phrase">
                       <h4 className>We have the largest collection of postage-stamp-based t-shirts designs on the Planet! </h4>

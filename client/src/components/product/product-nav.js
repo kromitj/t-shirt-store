@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { getProducts } from '../../actions/productActions'
@@ -165,4 +164,4 @@ const mapStateToProps = (state) => ({
   department: state.products.department
 })
 
-export default connect(mapStateToProps, { getProducts})(ProductNav);
+export default connect(mapStateToProps, { getProducts })(ProductNav);

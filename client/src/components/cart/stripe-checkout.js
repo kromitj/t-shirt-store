@@ -1,33 +1,28 @@
 import React from 'react'
 import StripeCheckout from 'react-stripe-checkout';
 import { MDBBtn } from 'mdbreact';
-import { Button, ToastContainer, toast } from 'mdbreact';
 
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
- 
+
 class CheckoutStripe extends React.Component {
-  constructor() {
-    super()
-    
-  }
+
   onToken = (token) => {
     fetch('/api/user/1/charge', {
       method: 'POST',
-      body: {token: JSON.stringify(token), 
-        user: this.props.auth},
+      body: {
+        token: JSON.stringify(token),
+        user: this.props.auth
+      },
     }).then(response => {
 
     });
   }
- 
-  // ...
- 
+
+
   render() {
     return (
       // ...
-       <StripeCheckout
+      <StripeCheckout
         name="How You Paying For This..."
         amount={this.props.price * 100}
         currency="USD"
@@ -42,7 +37,7 @@ class CheckoutStripe extends React.Component {
       <MDBBtn color="black" floated="right">
           Check out
         </MDBBtn>
-      </StripeCheckout>     
+      </StripeCheckout>
     )
   }
 }

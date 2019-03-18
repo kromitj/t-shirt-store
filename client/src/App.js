@@ -1,8 +1,6 @@
-import React, { Component, useReducer } from 'react';
+import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import { Provider } from 'react-redux'
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 
 import jwt_decode from 'jwt-decode'
 
@@ -36,17 +34,13 @@ if (localStorage.jwtToken) {
 }
 
 // check for cart 
-		
-class App extends Component {
 
-	constructor(props) {
-		super(props);
-	}
+class App extends Component {
 
 	componentDidMount() {
 		// load userCart from localStorage with users ipAddress as key
-	  store.dispatch(getUserIp())
-  }
+		store.dispatch(getUserIp())
+	}
 
 	render() {
 		var currentLocation = window.location.pathname;

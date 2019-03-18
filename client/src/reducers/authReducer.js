@@ -19,18 +19,18 @@ export default function(state = initialState, action) {
         isAuthenticated: !isEmpty(action.payload),
         user: action.payload
       };
-      case SET_USER_CART:
-        console.log("INSIDE SET_USER_CART REDUCER")
-        return {
-          ...state,
-          cart: action.payload.cart,
-          ipAddress: action.payload.ip
+    case SET_USER_CART:
+      console.log("INSIDE SET_USER_CART REDUCER")
+      return {
+        ...state,
+        cart: action.payload.cart,
+        ipAddress: action.payload.ip
       };
-      case ADD_USER_CART:
-        console.log("INSIDE ADD_USER_CART REDUCER")
-        return {
-          ...state,
-          cart: action.payload,
+    case ADD_USER_CART:
+      console.log("INSIDE ADD_USER_CART REDUCER")
+      return {
+        ...state,
+        cart: action.payload,
       };
     default:
       return state;

@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { getProducts } from '../../actions/productActions';
 
 
-import ProductCard from '../product/product-card'
 import Products from '../product/products'
 import ProductNav from '../product/product-nav'
 import ProductPagination from '../product/product-pagination'
-import Spinner from '../common/spinner';
 
 export class Main extends Component {
   constructor() {
@@ -20,19 +17,18 @@ export class Main extends Component {
   }
 
   componentDidMount() {
-  console.log(this.props)
+    console.log(this.props)
     if (this.props.location.search) {
-      this.props.getProducts(this.props.location.search);      
+      this.props.getProducts(this.props.location.search);
     }
   }
 
-componentWillReceiveProps(nextProps) {
-    if(JSON.stringify(this.props.products) !== JSON.stringify(nextProps.products))
-    {
-          console.log("nextProps: ", nextProps)
-           this.forceUpdate()
+  componentWillReceiveProps(nextProps) {
+    if (JSON.stringify(this.props.products) !== JSON.stringify(nextProps.products)) {
+      console.log("nextProps: ", nextProps)
+      this.forceUpdate()
     }
-} 
+  }
 
   render() {
     return (

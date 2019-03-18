@@ -6,29 +6,29 @@ const initialState = {
 	loading: false,
 	offset: 0,
 	limit: 50,
-	department: null,	
+	department: null,
 };
 
 export default function(state = initialState, action) {
 	switch (action.type) {
 		case PRODUCT_LOADING:
-      return {
-        ...state,
-        loading: true
-      };
-      case GET_PRODUCT:
-	      return {
-	        ...state,
-	        product: action.payload,
-	        loading: false
-	     };
-      case GET_PRODUCTS: 
-      console.log(action)     
-      return {
-        ...state,
-        products: action.payload,
-        loading: false
-      };
+			return {
+				...state,
+				loading: true
+			};
+		case GET_PRODUCT:
+			return {
+				...state,
+				product: action.payload,
+				loading: false
+			};
+		case GET_PRODUCTS:
+			console.log(action)
+			return {
+				...state,
+				products: action.payload,
+				loading: false
+			};
 		default:
 			return state;
 	}

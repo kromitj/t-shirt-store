@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 
 import { getProductPageById } from '../../actions/productActions';
 import { addUserCart } from '../../actions/authActions';
@@ -9,10 +8,8 @@ import { addUserCart } from '../../actions/authActions';
 import Spinner from '../common/spinner';
 
 class ProductPage extends Component {
-	 constructor() {
-	    super()
-	  }
-	 componentDidMount() {
+
+  componentDidMount() {
     if (this.props.match.params.id) {
       this.props.getProductPageById(this.props.match.params.id);
     }
@@ -25,28 +22,28 @@ class ProductPage extends Component {
   onAddToCart(e) {
     const userCartID = this.props.userCartID
     const productCart = []
-    productCart.push(this.props.product_id)
-    productCart.push(this.props.product.product.name)
-    productCart.push(this.props.product.product.price)
-    productCart.push(this.props.product.product.discounted_price)
-    productCart.push(this.props.product.product.thumbnail)
+    productCart.push(this.props.product.product_id)
+    productCart.push(this.props.product.name)
+    productCart.push(this.props.product.price)
+    productCart.push(this.props.product.discounted_price)
+    productCart.push(this.props.product.thumbnail)
     productCart.push(1)
     e.preventDefault()
     this.props.addUserCart(productCart, userCartID)
   }
 
-	render() {
-		const { product, loading } = this.props
+  render() {
+    const { product, loading } = this.props
     let productContent;
     if (product === null || loading) { productContent = (<Spinner />) } else {
-    	productContent = (
+      productContent = (
         <main className="mt-5 pt-4">
           <div className="container dark-grey-text mt-5">
             {/*Grid row*/}
             <div className="row wow fadeIn">
               {/*Grid column*/}
               <div className="col-md-6 mb-4">
-                <img src={`https://res.cloudinary.com/kromitj/image/upload/v1552638701/${product.image}`} className="img-fluid" height="200%"/>
+                <img src={`https://res.cloudinary.com/kromitj/image/upload/v1552638701/${product.image}`} alt={product.name} className="img-fluid" height="200%"/>
                 
               </div>
               {/*Grid column*/}
@@ -91,10 +88,10 @@ class ProductPage extends Component {
         </main>
       )
     }
-		return (
-			<div>{productContent}</div>
-		)
-	}
+    return (
+      <div>{productContent}</div>
+    )
+  }
 }
 
 ProductPage.propTypes = {
@@ -104,9 +101,8 @@ ProductPage.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  userCartID:  state.auth.ipAddress,
+  userCartID: state.auth.ipAddress,
   product: state.products.product
 });
 
 export default connect(mapStateToProps, { getProductPageById, addUserCart })(ProductPage);
-

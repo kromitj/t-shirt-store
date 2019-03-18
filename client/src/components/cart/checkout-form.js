@@ -1,33 +1,33 @@
-import React, {Component} from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn,  MDBSelectInput, MDBSelectOptions, MDBSelectOption } from 'mdbreact';
-import {CardElement, injectStripe} from 'react-stripe-elements';
+import React, { Component } from 'react';
+import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn } from 'mdbreact';
+import { CardElement, injectStripe } from 'react-stripe-elements';
 
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
-    this.state = {complete: false};
+    this.state = { complete: false };
     this.submit = this.submit.bind(this);
   }
 
   async submit(ev) {
     // User clicked submit
-    let {token} = await this.props.stripe.createToken({name: "Name"});
+    let { token } = await this.props.stripe.createToken({ name: "Name" });
     console.log("token: ", token)
     let response = await fetch("/api/user/1/charge", {
       method: "POST",
-      headers: {"Content-Type": "text/plain"},
+      headers: { "Content-Type": "text/plain" },
       body: token.id
     });
 
     if (response.ok) {
-      this.setState({complete: true})
+      this.setState({ complete: true })
     }
   }
 
   render() {
     if (this.state.complete) return <h1>Purchase Complete</h1>;
     return (
-          <MDBContainer>
+      <MDBContainer>
       <MDBRow>
         <MDBCol md="6">
           <form>

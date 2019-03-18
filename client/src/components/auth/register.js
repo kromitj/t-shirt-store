@@ -49,7 +49,6 @@ export class Register extends Component {
     this.props.registerUser(newUser, this.props.history);
   }
   render() {
-    const { user } = this.props.auth
     return (
       <MDBContainer>
       <MDBRow>

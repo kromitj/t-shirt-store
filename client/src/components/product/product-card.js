@@ -1,18 +1,13 @@
-import React, { Component} from 'react';
-import { connect } from 'react-redux'
-import PropTypes from 'prop-types'
+import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import { MDBRow, MDBCol, MDBCard, MDBCardImage, MDBCardBody, MDBBadge } from "mdbreact";
+import { MDBCol, MDBCard, MDBCardImage, MDBCardBody } from "mdbreact";
 import Price from './product-price'
 
-class ProductCard extends Component  {
-  constructor() {
-    super()
-  }
+class ProductCard extends Component {
 
   render() {
-  const { product } = this.props
+    const { product } = this.props
     return (
       <MDBCol lg="3" md="6" mb="4" >
         <MDBCard ecommerce className="align-items-center cascade wide product-item">
@@ -35,14 +30,9 @@ class ProductCard extends Component  {
         </MDBCard>
 
       </MDBCol>
-    )    
+    )
   }
 }
-
-ProductCard.propTypes = {
-}
-
-
 
 
 export default ProductCard

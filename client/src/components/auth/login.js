@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { loginUser } from '../../actions/authActions'
-import classnames from 'classnames'
 import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody } from 'mdbreact';
 
 export class Login extends Component {
@@ -50,8 +49,8 @@ export class Login extends Component {
 
     this.props.loginUser(newUser, this.props.history);
   }
-  render() {
-    const { errors } = this.state.errors
+  render() {const { errors } = this.state.errors
+
     return (
       <MDBContainer>
       <MDBRow>

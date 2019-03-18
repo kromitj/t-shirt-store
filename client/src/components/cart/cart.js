@@ -1,31 +1,28 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { Button, ToastContainer, toast } from 'mdbreact';
-import StripeCheckout from 'react-stripe-checkout'
 import CheckoutStripe from './stripe-checkout'
 //import { removeUserCart, updateUserCart, getCheckout } from '../../actions/authActions';
 
 class Cart extends Component {
-	constructor() {
-		super()
+  constructor() {
+    super()
     this.state = {
       orderSuccess: false
     }
-		
-	}
 
-	render() {
-		let totalPrice = 0
-		const cartItems = this.props.userCart.map((product) => {
-			const totalItemPrice = product[2] * product[5]
-			totalPrice += totalItemPrice
-			return (
+  }
+
+  render() {
+    let totalPrice = 0
+    const cartItems = this.props.userCart.map((product) => {
+      const totalItemPrice = product[2] * product[5]
+      totalPrice += totalItemPrice
+      return (
         <tr>
             <td className="col-sm-8 col-md-6">
               <div className="media">
-                <a className="thumbnail pull-left" href="#"> <img className="media-object" src={`https://res.cloudinary.com/kromitj/image/upload/v1552638701/${product[4]}`} style={{width: '72px', height: '72px'}} /> </a>
+                <a className="thumbnail pull-left" href="#"> <img className="media-object" alt={product[1]} src={`https://res.cloudinary.com/kromitj/image/upload/v1552638701/${product[4]}`} style={{width: '72px', height: '72px'}} /> </a>
                 <div className="media-body">
                   <h4 className="media-heading"><a href="#">{product[1]}</a></h4>
                   <span>Status: </span><span className="text-success"><strong>In Stock</strong></span>
@@ -41,10 +38,10 @@ class Cart extends Component {
                 <span className="glyphicon glyphicon-remove" /> Remove
               </button></td>
           </tr>)
-		})
-		const tax = totalPrice * .075
-		return (
-			<div className="container">
+    })
+    const tax = totalPrice * .075
+    return (
+      <div className="container cart-container">
   <div className="row">
     <div className="col-sm-12 col-md-10 col-md-offset-1">
       <table className="table table-hover">
@@ -58,8 +55,8 @@ class Cart extends Component {
           </tr>
         </thead>
         <tbody>
-        	{cartItems}
-        	<tr>
+          {cartItems}
+          <tr>
             <td> &nbsp; </td>
             <td> &nbsp; </td>
             <td> &nbsp; </td>
@@ -100,17 +97,13 @@ class Cart extends Component {
     </div>
   </div>
 </div>
-		);
-	}
+    );
+  }
 }
 
 const mapStateToProps = state => ({
-	userCart: state.auth.cart
+  userCart: state.auth.cart
 })
 
 
-export default connect(mapStateToProps, { })(Cart)
-
-
-
-
+export default connect(mapStateToProps, {})(Cart)

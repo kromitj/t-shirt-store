@@ -1,9 +1,9 @@
 import React from "react";
-import { MDBPagination, MDBPageItem, MDBPageNav, MDBCol, MDBRow } from "mdbreact";
+import { MDBPagination, MDBPageItem, MDBPageNav } from "mdbreact";
 
 const PaginationPage = () => {
   return (
-        <MDBPagination color="#FF6F61" circle className="product-pagination justify-content-center">
+    <MDBPagination color="#FF6F61" circle className="product-pagination justify-content-center">
           <MDBPageItem disabled>
             <MDBPageNav className="page-link">
               <span>First</span>
@@ -51,7 +51,7 @@ const PaginationPage = () => {
             </MDBPageNav>
           </MDBPageItem>
         </MDBPagination>
-    )
+  )
 }
 
 export default PaginationPage;

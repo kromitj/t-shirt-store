@@ -7,7 +7,7 @@ const requestIp = require('request-ip');
 
 
 const dotenv = require('dotenv');
-	dotenv.config();
+dotenv.config();
 const indexRouter = require('./routes/index');
 const productRouter = require('./routes/product');
 const customerRouter = require('./routes/customer')

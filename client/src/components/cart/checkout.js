@@ -1,7 +1,6 @@
-import React, { Component }from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBInput, MDBBtn,  MDBSelectInput, MDBSelectOptions, MDBSelectOption } from 'mdbreact';
-import {Elements, StripeProvider, StripeCheckout} from 'react-stripe-elements';
-import CheckoutForm from './checkout-form'
+import React, { Component } from "react";
+import { MDBBtn } from 'mdbreact'
+import { StripeCheckout } from 'react-stripe-elements';
 
 class Checkout extends Component {
   constructor(props) {
@@ -15,7 +14,7 @@ class Checkout extends Component {
 
   render() {
     return (
-       <StripeCheckout
+      <StripeCheckout
         name="T-Shirt-Store"
         amount={100}
         stripeKey={"pk_test_TYooMQauvdEDq54NiTphI7jx"}
@@ -27,7 +26,8 @@ class Checkout extends Component {
       >
         <MDBBtn onClick={this.submit}>Place Order!</MDBBtn>
       </StripeCheckout>
-  )}
+    )
+  }
 };
 
 export default Checkout

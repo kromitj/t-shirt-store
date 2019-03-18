@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom';
 import { logoutUser } from '../../actions/authActions'
-import BrandLogo from '../../imgs/tshirtshop.png'
 
 import {
   MDBNavbar,
@@ -11,8 +10,6 @@ import {
   MDBNavbarNav,
   MDBNavItem,
   MDBNavLink,
-  MDBNavbarToggler,
-  MDBCollapse,
   MDBDropdown,
   MDBDropdownToggle,
   MDBDropdownMenu,
