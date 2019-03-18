@@ -6,19 +6,19 @@ import PropTypes from 'prop-types';
 
 import jwt_decode from 'jwt-decode'
 
+import store from './store'
 import setAuthToken from './utils/setAuthToken'
 import { setCurrentUser, logoutUser, getUserIp } from './actions/authActions'
-import store from './store'
 
-import Footer from './components/layout/Footer'
 import NavbarPage from './components/layout/Nav'
-import Item from './components/navbar/navItem'
 import Landing from './components/layout/Landing'
 import Main from './components/layout/Main'
 import ProductPage from './components/product/product-page'
 import Login from './components/auth/login'
 import Register from './components/auth/register'
 import Cart from './components/cart/cart'
+import Checkout from './components/cart/checkout'
+import Footer from './components/layout/Footer'
 
 import './App.scss';
 
@@ -61,6 +61,7 @@ class App extends Component {
 	    			<Route exact path='/product' component={ Main } />
 	    			<Route exact path="/product/:id" component={ProductPage} />
 	    			<Route exact path='/cart' component={ Cart} />
+	    			<Route exact path='/checkout' component={ Checkout} />
 	    			<Route exact path='/login' component={ Login} />
 	    			<Route exact path='/register' component={ Register} />
 	  			</div>

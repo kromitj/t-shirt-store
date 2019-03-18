@@ -7,7 +7,6 @@ const initialState = {
 	offset: 0,
 	limit: 50,
 	department: null,	
-	ip: null
 };
 
 export default function(state = initialState, action) {
@@ -27,8 +26,7 @@ export default function(state = initialState, action) {
       console.log(action)     
       return {
         ...state,
-        products: action.payload.products,
-        ip: action.payload.ip,
+        products: action.payload,
         loading: false
       };
 		default:

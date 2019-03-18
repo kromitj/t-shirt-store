@@ -26,10 +26,11 @@ class ProductCard extends Component  {
           />
           </div>
           <MDBCardBody color="cyan lighten-5" className="text-center ">
-            <Link to={`/product/${product.product_id}`} className="btn btn-info">
-              <h5>{product.name}</h5>
-            </Link>
+             <h5>{product.name}</h5>
             <Price product={product}></Price>
+            <Link to={`/product/${product.product_id}`} className="btn btn-info">
+              See Details
+            </Link>
           </MDBCardBody>
         </MDBCard>
 

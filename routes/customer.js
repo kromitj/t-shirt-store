@@ -7,6 +7,8 @@ const requestIp = require('request-ip');
 // const keys = require('../../config/keys');
 const passport = require('passport');
 
+const stripe = require("stripe")("sk_test_4eC39HqLyjWDarjtT1zdp7dc");
+
 // Load Input Validation
 const validateRegisterInput = require('./validation/register');
 const validateLoginInput = require('./validation/login');
@@ -130,5 +132,20 @@ router.get(
     });
   }
 );
+
+router.post("/:id/charge", async (req, res) => {
+  console.log(req)
+  try {
+    let {status} = await stripe.charges.create({
+      amount: 2000,
+      currency: "usd",
+      description: "An example charge",
+      source: "tok_amex"
+    });
+    res.json({status});
+  } catch (err) {
+    res.status(500).json(err);
+  }
+});
 
 module.exports = router;

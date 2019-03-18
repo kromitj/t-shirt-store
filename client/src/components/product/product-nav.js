@@ -47,17 +47,99 @@ class ProductNav extends Component {
         <MDBNavbarToggler onClick={this.toggleCollapse} />
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
-            <MDBNavItem active id="0">
-              <MDBNavLink to="" name="" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">>All</MDBNavLink>
+
+          ` <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">All</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <MDBDropdownItem >
+                  <MDBNavLink to="" name="" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">All</MDBNavLink>
+                </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=1&category=1" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">French</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=1&category=2" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Italian</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                      <MDBNavLink to="" name="?department=1&category=3" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Irish</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=2&category=4" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Animal</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=2&category=5" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Flower</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                  <MDBNavLink to="" name="?department=3&category=6" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Christmas</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=3&category=7" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Valintines</MDBNavLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
-            <MDBNavItem id="1">
-              <MDBNavLink to="" onClick={ this.onDeptClick } name="?department=1" id="1" className="product-nav-bar-item">>Regional</MDBNavLink>
+
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Regional</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <MDBDropdownItem >
+                  <MDBNavLink to="" name="?department=1" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">All</MDBNavLink>
+                </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=1&category=1" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">French</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=1&category=2" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Italian</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                      <MDBNavLink to="" name="?department=1&category=3" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Irish</MDBNavLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
-            <MDBNavItem id="2">
-              <MDBNavLink to="" onClick={ this.onDeptClick } name="?department=2" id="2" className="product-nav-bar-item">>Nature</MDBNavLink>
+
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Nature</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <MDBDropdownItem >
+                  <MDBNavLink to="" name="?department=2" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">All</MDBNavLink>
+                </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=2&category=4" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Animal</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=2&category=5" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Flower</MDBNavLink>
+                  </MDBDropdownItem>                  
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
-            <MDBNavItem id="3">
-              <MDBNavLink to="" onClick={ this.onDeptClick } name="?department=3" id="3" className="product-nav-bar-item">>Seasonal</MDBNavLink>
+
+            <MDBNavItem>
+              <MDBDropdown>
+                <MDBDropdownToggle nav caret>
+                  <span className="mr-2">Seasonal</span>
+                </MDBDropdownToggle>
+                <MDBDropdownMenu>
+                <MDBDropdownItem >
+                  <MDBNavLink to="" name="?department=3" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">All</MDBNavLink>
+                </MDBDropdownItem>
+                  <MDBDropdownItem >
+                  <MDBNavLink to="" name="?department=3&category=6" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Christmas</MDBNavLink>
+                  </MDBDropdownItem>
+                  <MDBDropdownItem >
+                    <MDBNavLink to="" name="?department=3&category=7" id="0" onClick={ this.onDeptClick} className="product-nav-bar-item">Valintines</MDBNavLink>
+                  </MDBDropdownItem>
+                </MDBDropdownMenu>
+              </MDBDropdown>
             </MDBNavItem>
           </MDBNavbarNav>
           <MDBNavbarNav right>
