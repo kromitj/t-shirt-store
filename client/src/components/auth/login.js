@@ -49,8 +49,8 @@ export class Login extends Component {
 
     this.props.loginUser(newUser, this.props.history);
   }
-  render() {const { errors } = this.state.errors
-
+  render() {
+    const { errors } = this.state.errors
     return (
       <MDBContainer>
       <MDBRow>
