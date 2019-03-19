@@ -22,8 +22,11 @@ class ProductNav extends Component {
   constructor() {
     super()
     this.state = {
-      isOpen: false
+      isOpen: false,
+      search: ""
     };
+    this.onChange = this.onChange.bind(this);
+    this.onSearchSubmit = this.onSearchSubmit.bind(this);
     this.onDeptClick = this.onDeptClick.bind(this);
   }
 
@@ -36,6 +39,16 @@ class ProductNav extends Component {
     $(`#${e.target.id}`).addClass("active");
     this.props.getProducts(e.target.name, this.props.history)
   }
+  onChange(e) {
+    this.setState({
+      search: e.target.value
+    });
+  }
+  onSearchSubmit(e) {
+    e.preventDefault();
+    const searchQuery = "?search=" + this.state.search
+    this.props.getProducts(searchQuery, this.props.history)
+  }
   render() {
 
     return (
@@ -47,7 +60,7 @@ class ProductNav extends Component {
         <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
           <MDBNavbarNav left>
 
-          ` <MDBNavItem>
+          <MDBNavItem>
               <MDBDropdown>
                 <MDBDropdownToggle nav caret>
                   <span className="mr-2">All</span>
@@ -143,9 +156,16 @@ class ProductNav extends Component {
           </MDBNavbarNav>
           <MDBNavbarNav right>
             <MDBNavItem>
-              <MDBFormInline waves>
+              <MDBFormInline waves onSubmit={this.onSearchSubmit}>
                 <div className="md-form my-0">
-                  <input className="form-control mr-sm-2 searchbar-focus" type="text" placeholder="Search" aria-label="Search" />
+                  <input 
+                    type="text" 
+                    value={this.state.search}
+                    onChange={this.onChange} 
+                    className="form-control mr-sm-2 searchbar-focus" 
+                    placeholder="Search" 
+                    aria-label="Search" 
+                  />
                 </div>
               </MDBFormInline>
             </MDBNavItem>
